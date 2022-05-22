@@ -1,15 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import React from 'react'
 import { DocsifyContainer } from '../../components/DocsifyComponents'
 import Code from '../../components/DocsifyComponents/Code'
 import { Header } from '../../components/DocsifyComponents/Header'
 
-const data: Array<string> = ['sdf', 'sd', 'ttt', 'ff', 'fff']
-
-type HeaderArrayType = Array<{ id: string, isActive: boolean, offsetTop: number }>
-
 export default function Know() {
-
     return (
         <DocsifyContainer>
             <Header title='椭圆曲线加密算法(ECC)-基础'>
