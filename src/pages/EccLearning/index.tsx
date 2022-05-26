@@ -3,7 +3,7 @@ import { DocsifyContainer } from '../../components/DocsifyComponents'
 import Code from '../../components/DocsifyComponents/Code'
 import { Header } from '../../components/DocsifyComponents/Header'
 
-export default function Know() {
+export default function EccLearning() {
     return (
         <DocsifyContainer>
             <Header title='椭圆曲线加密算法(ECC)-基础'>
