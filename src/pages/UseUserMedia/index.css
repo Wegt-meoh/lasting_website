@@ -1,0 +1,18 @@
+.useUserMedia{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+.media-window>video{
+    display: block;
+    width: 400px;
+    height: 400px;
+    border-radius: 100px;
+    overflow: hidden;
+}
+.media-window{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
