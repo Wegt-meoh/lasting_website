@@ -6,25 +6,44 @@ export default function RefDemo() {
   const inputText = useRef<HTMLInputElement>(null)
   const [value, setValue] = useState({ value: 1 })
   const deBouncingValue = useThrotting(value, 2000, 2000)
+  const [current, reSet] = useCount(5)
 
-  useEffect(()=>{
-    console.log('1')
-    return ()=>console.log('2')
-  })
-
-  console.log(null == undefined)
   return (
-    <div style={{ width: '200px', margin: '10px auto' }}>     
-        <input name='test' ref={inputText} type="text" />
-        <div>{value.value}</div>
-        <div>{deBouncingValue.value}</div>
-        <button onClick={() => {
-          if (inputText.current === null) return
-          inputText.current.focus()
-          setValue((i) => {
-            return { value: i.value + 1 }
-          })
-        }}>focus</button>
+    <div style={{ width: '200px', margin: '10px auto' }}>
+      <input name='test' ref={inputText} type="text" />
+      <div>
+        <label>
+          count={current}
+        </label>
+      </div>
+      <div>{value.value}</div>
+      <div>{deBouncingValue.value}</div>
+      <button onClick={() => {
+        reSet()
+        if (inputText.current === null) return
+        inputText.current.focus()
+        setValue((i) => {
+          return { value: i.value + 1 }
+        })
+      }}>focus</button>
     </div>
   )
+}
+
+function useCount(total: number): [number, () => void] {
+  const [current, setCurrent] = useState(total)
+
+  useEffect(() => {
+    let timer: null | NodeJS.Timeout = null
+    if (current > 0) {
+      timer = setTimeout(() => {
+        setCurrent(v => v - 1)
+      }, 1000)
+    }
+    return () => {
+      if (timer !== null) clearTimeout(timer)
+    }
+  }, [current])
+
+  return [current, () => { setCurrent(total) }]
 }
