@@ -136,7 +136,7 @@ html {
     max-width: 100%;
 }
 
-.Docsify-content-artical p {
+.Docsify-content-artical-code {
     white-space: pre-wrap;
     padding: 10px;
     border-radius: 4px;

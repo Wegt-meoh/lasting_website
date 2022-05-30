@@ -34,7 +34,7 @@ interface DocsifyContainerProps {
 }
 
 /**
- * notice its children should be H1, H2, H3, Code or <></> and other Component will be seemed as <div/>
+ * notice its children should be H1, H2, H3, Code or <></> and other Component will be seemed as div
  * 
  */
 export function DocsifyContainer(props: DocsifyContainerProps) {

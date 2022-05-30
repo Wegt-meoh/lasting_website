@@ -19,7 +19,7 @@ export default function Code({ children ,style}: CodeProps) {
     }
 
     return (
-        <p style={style}>
+        <p style={style} className='Docsify-content-artical-code'>
             {children}
         </p>
     )
