@@ -11,6 +11,9 @@
     border-radius: 100px;
     overflow: hidden;
 }
+.mirror{
+    transform: rotateY(180deg);
+}
 .media-window{
     display: flex;
     flex-flow: column nowrap;

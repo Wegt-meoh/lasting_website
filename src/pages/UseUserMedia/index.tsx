@@ -4,19 +4,25 @@ import './index.css'
 
 
 export default function UseUserMedia() {
+    const [isMirror, setIsMirror] = useState(false)
     const videoRef = useRef<HTMLVideoElement>(null)
     const canvasRef = useRef<HTMLCanvasElement>(null)
     const downloadRef = useRef<HTMLAnchorElement>(null)
 
     useEffect(() => {
-        if (navigator.mediaDevices.getUserMedia !== undefined || navigator.mediaDevices.getUserMedia !== null) {
-            navigator.mediaDevices.getUserMedia({ audio: false, video: { width: 400, height: 400 } })
-                .then(mediaStream => {                   
-                    if (videoRef.current !== null) {
-                        videoRef.current.srcObject = mediaStream
-                        videoRef.current.play()
-                    }
-                }).catch(reason => { console.log('reason' + reason) })
+        try {
+            if (navigator.mediaDevices.getUserMedia !== undefined || navigator.mediaDevices.getUserMedia !== null) {
+                navigator.mediaDevices.getUserMedia({ audio: false, video: { width: 400, height: 400 } })
+                    .then(mediaStream => {
+                        if (videoRef.current !== null) {
+                            videoRef.current.srcObject = mediaStream
+                            videoRef.current.play()
+                        }
+                    }).catch(reason => { alert('无法调用摄像头') })
+            }
+        } catch (e) {
+            alert('请查看控制台')
+            console.log(`地址栏搜索chrome://flags/，找到Insecure origins treated as secure,把本站域名http://www.lastingcoder.xyz输入`)
         }
         return () => {
             if (videoRef.current !== null) {
@@ -25,24 +31,23 @@ export default function UseUserMedia() {
         }
     }, [])
 
-    function handleClick() {
-        if (canvasRef.current !== null && videoRef.current !== null) {        
+    function saveImg() {
+        if (canvasRef.current !== null && videoRef.current !== null) {
             canvasRef.current.getContext('2d')?.drawImage(videoRef.current, 0, 0)
             const imgUrl = canvasRef.current.toDataURL()
-            console.log('imgUrl: ' + imgUrl)
-            const imgDataArray = imgUrl.split(',')
-            let bufferString = atob(imgDataArray[1])
+            const [typePart, dataPart] = imgUrl.split(',')
+            let bufferString = atob(dataPart)
             let u8array = new Uint8Array(bufferString.length)
             let n = bufferString.length
-            const mimeType = imgDataArray[0].match(/:(.*);/)
-            console.log(mimeType)
+            const mimeType = typePart.match(/:(.*);/)
             while (n--) {
                 u8array[n] = bufferString.charCodeAt(n)
             }
-            if (imgDataArray[0] !== null && mimeType !== null && downloadRef.current !== null) {
+            if (u8array !== null && mimeType !== null && downloadRef.current !== null) {
                 let blob = new Blob([u8array], { type: mimeType[1] })
                 let CompatibleURL = window.URL || window.webkitURL
                 const objUrl = CompatibleURL.createObjectURL(blob)
+                console.log(objUrl)
                 downloadRef.current.download = 'target.png'
                 downloadRef.current.href = objUrl
                 downloadRef.current.click()
@@ -55,11 +60,12 @@ export default function UseUserMedia() {
         <div className='useUserMedia'>
             <div className='media-window'>
                 <video
-                    
+                    className={isMirror ? 'mirror' : ''}
                     width={400}
                     height={400}
                     ref={videoRef} />
-                <Button onClick={handleClick}>截图</Button>
+                <Button onClick={() => { setIsMirror(!isMirror) }}>{isMirror ? '镜像' : '正常'}</Button>
+                <Button onClick={saveImg}>截图</Button>
             </div>
             <canvas
                 className='useUserMidia-canvas'
