@@ -8,21 +8,34 @@ import { Header } from '../../components/DocsifyComponents/Header'
 export default function LearningNote() {
     return (
         <DocsifyContainer>
-            <Header title='面试实战' size='h1'>
+            <Header title='面试实战（北京司索科技技术面）' size='h1'>
                 <p>
-                    后端三个接口，判断哪个接口返回最快。
+                    后端三个接口，判断哪个接口返回最快，三个接口的返回值时一样的。
                     {f() as ReactChild}
                 </p>
                 <p>
                     antd的form写一个简单的登陆界面，要求账号为邮箱格式，密最短为6位要求有提示。
                     点击按钮在控制台打印这些值。
+                    一开始账号没有要求邮箱，
+                    后来又问知不知道useForm这个hook。
                     {f1() as ReactChild}
                 </p>
                 <p>
                     类似于验证码倒计时60秒。
                     写一个钩子函数返回倒计时时间和一个reset函数。
+                    还有扩展，时间不够，面试官没深入了。
                     {f2() as ReactChild}
                 </p>
+                <p>
+                    create-react-app的eject具体做了什么
+                </p>
+            </Header>
+            <Header title='typescript中的特殊符号' size='h1'>
+                <ol>
+                    <li>属性或参数中使用 ？：表示该属性或参数为可选项</li>
+                    <li>属性或参数中使用 ！：表示强制解析（告诉typescript编译器，这里一定有值），常用于vue-decorator中的@Prop</li>
+                    <li>变量后使用 ！：表示类型推断排除null、undefined</li>
+                </ol>
             </Header>
         </DocsifyContainer>
     )
