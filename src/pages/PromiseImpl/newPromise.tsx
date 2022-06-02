@@ -14,6 +14,69 @@ interface thenable<T> {
     ): thenable<T>
 }
 
+function resolvePromise<T>(
+    promise: newPromise<T>,
+    x: T | thenable<T>,
+    resolve: (value: T | thenable<T>) => void,
+    reject: (reason: any) => void
+): void {
+    if (x === promise) {// 2.3.1
+        reject(new TypeError('TypeError:circular reference'))
+    } else if (x instanceof newPromise) {
+        let resolved = false
+        const then = (x as thenable<T>).then
+        try {
+            then.call(
+                x,
+                value => {
+                    if (resolved) return
+                    resolved = true
+                    resolvePromise(promise, value, resolve, reject)
+                },
+                reason => {
+                    if (resolved) return
+                    resolved = true
+                    reject(reason)
+                }
+            )
+        } catch (error) {
+            if (resolved) return
+            resolved = true
+            reject(error)
+        }
+    } else if (x !== null && (typeof x === 'object' || typeof x === 'function')) {//2.3.3                        
+        let resolved = false
+        try {
+            const then = (x as thenable<T>).then
+            if (typeof then === 'function') {
+                then.call(
+                    x,
+                    (y) => {
+                        if (resolved) return
+                        resolved = true
+                        resolvePromise(promise, y, resolve, reject)
+                    },
+                    (r) => {
+                        if (resolved) return
+                        resolved = true
+                        reject(r)
+                    }
+                )
+            } else {
+                if (resolved) return
+                resolved = true
+                resolve(x)
+            }
+        } catch (error) {
+            if (resolved) return
+            resolved = true
+            reject(error)
+        }
+    } else {
+        resolve(x)
+    }
+}
+
 export class newPromise<T>{
     state: PromiseState = PromiseState.PENDING
     value!: T | thenable<T>
@@ -33,10 +96,43 @@ export class newPromise<T>{
         try {
             setTimeout(() => {
                 if (this.state !== PromiseState.PENDING) return
-                this.state = PromiseState.FULFILLED
-                this.value = value
-                this.onFulfilledCallbacks.forEach(fn => fn())
-                this.onFulfilledCallbacks = []
+                // 下面这个分支处理value是thenable的情况，
+                // 貌似直接让value等于这个value也可以过promisesaplus
+                if (value !== null && (typeof value === 'object' || typeof value === 'function')) {
+                    let resolved = false
+                    try {
+                        const then = (value as thenable<T>).then
+                        if (typeof then === 'function') {
+                            then.call(
+                                value,
+                                y => {
+                                    if (resolved) return
+                                    resolved = true
+                                    this.resolve(y)
+                                },
+                                r => {
+                                    if (resolved) return
+                                    resolved = false
+                                    this.reject(r)
+                                }
+                            )
+                        } else {
+                            this.value = value
+                            this.state = PromiseState.FULFILLED
+                            this.onFulfilledCallbacks.forEach(fn => fn())
+                            this.onFulfilledCallbacks = []
+                        }
+                    } catch (e) {
+                        if (resolved) return
+                        resolved = true
+                        this.reject(e)
+                    }
+                } else {
+                    this.value = value
+                    this.state = PromiseState.FULFILLED
+                    this.onFulfilledCallbacks.forEach(fn => fn())
+                    this.onFulfilledCallbacks = []
+                }
             })
         } catch (error) {
             this.reject(error)
@@ -57,10 +153,10 @@ export class newPromise<T>{
         }
     }
 
-    then = <TResult1 = T, TResult2 = never>(
+    then<TResult1 = T, TResult2 = never>(
         onFulfilled?: ((value: T | thenable<T>) => TResult1 | thenable<TResult1>) | null | undefined,
         onRejected?: ((reason: any) => TResult2 | thenable<TResult2>) | null | undefined
-    ): newPromise<TResult1 | TResult2> => {
+    ): newPromise<TResult1 | TResult2> {
         onFulfilled = (typeof onFulfilled === 'function' ?
             onFulfilled : (val: T | thenable<T>) => val) as any
         onRejected = typeof onRejected === 'function' ?
@@ -72,7 +168,7 @@ export class newPromise<T>{
                     setTimeout(() => {
                         try {
                             let x = onFulfilled!(this.value)
-                            this.resolvePromise(promise1, x, resolve, reject)
+                            resolvePromise(promise1, x, resolve, reject)
                         } catch (error) {
                             reject(error)
                         }
@@ -82,7 +178,7 @@ export class newPromise<T>{
                     setTimeout(() => {
                         try {
                             let x = onRejected!(this.reason)
-                            this.resolvePromise(promise1, x, resolve, reject)
+                            resolvePromise(promise1, x, resolve, reject)
                         } catch (error) {
                             reject(error)
                         }
@@ -92,7 +188,7 @@ export class newPromise<T>{
                     this.onFulfilledCallbacks.push(() => {
                         try {
                             let x = onFulfilled!(this.value)
-                            this.resolvePromise(promise1, x, resolve, reject)
+                            resolvePromise(promise1, x, resolve, reject)
                         } catch (error) {
                             reject(error)
                         }
@@ -100,7 +196,7 @@ export class newPromise<T>{
                     this.onRejectedCallbacks.push(() => {
                         try {
                             let x = onRejected!(this.reason)
-                            this.resolvePromise(promise1, x, resolve, reject)
+                            resolvePromise(promise1, x, resolve, reject)
                         } catch (error) {
                             reject(error)
                         }
@@ -111,61 +207,63 @@ export class newPromise<T>{
         return promise1
     }
 
-    resolvePromise<T>(
-        promise: newPromise<T>,
-        x: T | thenable<T>,
-        resolve: (value: T | thenable<T>) => void,
-        reject: (reason: any) => void
-    ): void {
-        if (x === promise) {// 2.3.1
-            reject(new TypeError('TypeError:circular reference'))
-        } else if (Object.prototype.toString.call(x) === '[object newPromise]') {
-            let resolved = false
-            const then=(x as newPromise<T>).then
-            then(
-                (value) => {
-                    if (resolved) return
-                    resolved = true
-                    resolve(value)
-                },
-                reason => {
-                    if (resolved) return
-                    resolved = true
-                    reject(reason)
-                }
-            )
-        } else if (x !== null && (typeof x === 'object' || typeof x === 'function')) {//2.3.3                        
-            let resolved = false
-            try {
-                const then = (x as thenable<T>).then
-                if (typeof then === 'function') {
-                    then.call(
-                        x,
-                        (y) => {
-                            if (resolved) return
-                            resolved = true
-                            this.resolvePromise(promise, y, resolve, reject)
-                        },
-                        (r) => {
-                            if (resolved) return
-                            resolved = true
-                            reject(r)
-                        }
-                    )
-                } else {
-                    if (resolved) return
-                    resolved = true
-                    resolve(x)
-                }
-            } catch (error) {
-                if (resolved) return
-                resolved = true
-                reject(error)
-            }
+    catch<TResult = never>(onRejected?: ((reason: any) => TResult | thenable<TResult>) | null | undefined): newPromise<T | TResult> {
+        return this.then(null, onRejected)
+    }
+
+    static resolve<T>(value: T | thenable<T>): newPromise<T> {
+        if (value instanceof newPromise) {
+            return value
         } else {
-            resolve(x)
+            const promise1 = new newPromise<T>((resolve, reject) => {
+                resolvePromise(promise1, value, resolve, reject)
+            })
+            return promise1
         }
     }
+
+    static reject(reason: any): newPromise<unknown> {
+        const promise1 = new newPromise((resolve, reject) => {
+            reject(reason)
+        })
+        return promise1
+    }
+
+    // finally(onFinally) === then(onFinally,onFinally)    
+
+    finally(onFinally?: (() => void) | undefined | null): newPromise<T> {
+        onFinally = (typeof onFinally === 'function' ?
+            onFinally : () => { }) as any
+
+        return this.then(
+            value => {
+                return newPromise.resolve(onFinally!()).then(() => value) as thenable<T>
+            },
+            reason => {
+                return newPromise.resolve(onFinally!()).then(() => { throw reason }) as thenable<any>
+            }
+        )
+    }
+
+    static all<T extends readonly unknown[] | []>(values: T): newPromise<{ -readonly [P in keyof T]: Awaited<T[P]> }> {
+        const promise1 = new newPromise<{ -readonly [P in keyof T]: Awaited<T[P]> }>((resolve, reject) => {
+            let count = 0
+            let resultArray = []
+            values.forEach((item, index) => {
+                if (item instanceof newPromise) {
+                    // resolvePromise(promise1, item, resolve, reject)
+                } else {
+
+                }
+            })
+
+        })
+        return promise1
+    }
+
+    // static race<T extends readonly unknown[]|[]>(values:T):newPromise<>{
+
+    // }
 }
 
 
@@ -180,4 +278,4 @@ newPromise.defer = newPromise.deferred = function () {
 };
 
 // @ts-ignore
-export = newPromise;
+// export = newPromise;

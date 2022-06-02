@@ -204,5 +204,5 @@ MyPromise.defer = MyPromise.deferred = function () {
 };
 
 // @ts-ignore
-export = MyPromise;
+// export = MyPromise;
 
