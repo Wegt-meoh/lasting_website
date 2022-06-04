@@ -6,7 +6,7 @@ export default function RefDemo() {
   const inputText = useRef<HTMLInputElement>(null)
   const [value, setValue] = useState({ value: 1 })
   const deBouncingValue = useThrotting(value, 2000, 2000)
-  const [current, reSet] = useCount(5)
+  const [current, reSet] = useCount2(5)
 
   return (
     <div style={{ width: '200px', margin: '10px auto' }}>
@@ -47,3 +47,35 @@ function useCount(total: number): [number, () => void] {
 
   return [current, () => { setCurrent(total) }]
 }
+
+function useCount2(total: number): [number, () => void] {
+  const [current, setCurrent] = useState(total)
+
+  const callback = () => {
+    let timer = setTimeout(() => {
+      if (current > 0) {
+        console.log(current)
+        setCurrent(v => v - 1)
+      }
+    }, 1000)
+    return () => {
+      clearTimeout(timer)
+    }
+  }
+  useEffect(callback, [current])
+  return [current, () => { setCurrent(total) }]
+}
+
+// function componentDidMount(callback: () => any) {
+//   useEffect(callback, [])
+// }
+
+// function componentUpdate(callback:()=>any){
+//   useEffect(callback)
+// }
+
+// function componentWillUnmount(callback:()=>any){
+//   useEffect(()=>{
+//     return callback
+//   },[])
+// }
