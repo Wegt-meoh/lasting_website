@@ -14,9 +14,26 @@ export default function Artical() {
       </header>
       <section>
         {routes.map((r, index) => {
-          return <Link key={index} to={r.path === undefined ? '' : r.path}>{r.title}</Link>
+          return <ArticalItem key={index} path={r.path} title={r.title} date={r.date} />
         })}
       </section>
     </div>
+  )
+}
+
+interface ArticalItemProps {
+  title: string
+  date?: string
+  path?: string
+}
+
+function ArticalItem(props: ArticalItemProps) {
+  const { title, date, path } = props
+
+  return (
+    <Link className='ArticalItem' to={path === undefined ? '' : path}>
+      <h3>{title}</h3>
+      <span>{date}</span>
+    </Link>
   )
 }

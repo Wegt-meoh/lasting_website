@@ -10,7 +10,7 @@ function getTheme(): 'light' | 'dark' | 'newMoon' {
     if (theme === 'light' || theme === 'dark' || theme === 'newMoon') {
         return theme
     } else {
-        return 'newMoon'
+        return 'dark'
     }
 }
 

@@ -14,6 +14,7 @@ interface customRouteObject extends Omit<RouteObject, 'children'> {
     desc: string
     classify: 'artical'|'product'|'other'
     children?: customRouteObject[]
+    date?:string
 }
 
 const routes: customRouteObject[] = [
@@ -27,7 +28,7 @@ const routes: customRouteObject[] = [
     { path: '/draggingList', element: <DraggingList />, title: '拖动列表', desc: '', classify: 'product' },
     { path: '/loginDemo', element: <Login />, title: '登陆页面Demo', desc: '', classify: 'product' },
     { path: '/useUserMedia', element: <UseUserMedia />, title: '摄像头拍照', desc: '', classify: 'product' }, 
-    { path: '/knowlege', element: <Knowlege />, title: '知识梳理', desc: '', classify: 'artical' },    
+    { path: '/knowlege', element: <Knowlege />, title: '知识梳理', desc: '', classify: 'artical' ,date:'2022 06 08'},    
 ]
 
 function getProduct() {

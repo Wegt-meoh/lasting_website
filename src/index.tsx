@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import SiderBar from './components/SiderBar';
 import Footer from './components/Footer';
 import './index.css'
@@ -13,9 +13,14 @@ import { useAppSelector } from './hooks/hook';
 export default function App() {
   const routes = useRoutes(getAllRoutes())
   const theme = useAppSelector(state => state.theme.value)
+  const [appClassName,setAppClassName]=useState('App')
+
+  useEffect(()=>{
+    setAppClassName(`App ${theme}`)
+  },[theme])
 
   return (
-    <div className="App">
+    <div className={appClassName}>
       <SiderBar />
       <main>
         <Suspense fallback={<h1>loading...</h1>}>

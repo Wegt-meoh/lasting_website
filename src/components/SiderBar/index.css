@@ -9,6 +9,11 @@
     grid-template-columns: minmax(0,0.8fr) minmax(0,2fr) minmax(0,0.8fr); 
     grid-template-rows: var(--siderbar-height);       
 }
+
+.siderbar a{
+    text-decoration: none;
+}
+
 .innerbar{
     grid-column: 2;
     padding: 1rem 0;        
@@ -32,12 +37,22 @@
     align-items: center;
 }
 
-.innerbar nav{
+.innerbar>nav{
     font-size: 0.6rem;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+}
+
+.themeToggle{
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+}
+
+.themeToggle>img{
+    width: 100%;
 }
 
 .innerbar>.brand{
@@ -48,7 +63,7 @@
     fill:white;
 }
 
-.innerbar a:hover{
-    color:  var(--light-grey);
+.innerbar a:hover,.themeToggle:hover{
+    color:  white;
     background-color: var(--light-black);    
 }

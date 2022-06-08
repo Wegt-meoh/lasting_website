@@ -6,11 +6,11 @@
 
 ### mac电脑安装homebrew
 
-* <a href='https://zhuanlan.zhihu.com/p111014448'>知乎的安装页面</a>
+* <a href='https://zhuanlan.zhihu.com/p111014448' target='_blank' rel='noferer'>知乎的安装页面</a>
 
 ### react教程
 
-* <a href=''>bilibili的视频教程链接</a>
+* <a>bilibili的视频教程链接</a>
 
 ### 加速克隆
 
@@ -22,13 +22,13 @@
 
 >神奇的文档初始化工具
 
-* <a href='https://docsify.js.org/#/' target='_blank'>官方网站</a>
+* <a href='https://docsify.js.org/#/' target='_blank' rel='noreferer'>官方网站</a>
 
 ### Nginx
 
 >An HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.
 
-* <a href='http://nginx.org/en/' target='_blank'>官方网站</a>
+* <a href='http://nginx.org/en/' target='_blank' rel='noreferer'>官方网站</a>
 * [安装教程](https://www.runoob.com/linux/nginx-install-setup.html)
 
 ---
@@ -101,7 +101,7 @@
 
 ### 尝试用下图的格式书写你的api文档
 
->![](/mdFiles/knowlage/images/trtr.png)
+> ![](/mdFiles/knowlage/images/trtr.png)
 
 ### typescript
 

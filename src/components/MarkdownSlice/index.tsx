@@ -7,7 +7,6 @@ import './index.css'
 
 
 interface MarkdownSliceProps {
-    theme?: 'light' | 'dark',
     src: string,
     alt: string,
     languageSubset: string[]
@@ -15,13 +14,11 @@ interface MarkdownSliceProps {
 
 export default function MarkdownSlice(props: MarkdownSliceProps) {
     const {
-        theme = 'light',
         src,
         alt,
         languageSubset = [],
     } = props
     const [content, setContent] = useState(alt)
-    const [classNames, setClassNames] = useState<string>()
 
     useEffect(() => {
         marked.setOptions({
