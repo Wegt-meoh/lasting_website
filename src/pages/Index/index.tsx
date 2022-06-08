@@ -2,15 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './index.css'
 import IndexFooter from '../../components/IndexFooter';
-import { customRouteObject, getAvailableRoutes } from '../../route/routes';
+import { customRouteObject } from '../../route/routes';
 import Card from '../../components/Card';
 import { GithubOutlined } from '@ant-design/icons';
 
 
 
 export default function Index() {
-
-    const routes = getAvailableRoutes()
+    
     return (
         <>
             <span className='version-span'>
@@ -21,9 +20,9 @@ export default function Index() {
                     <h2>Welcome to lasting's website</h2>
                 </div>
                 <div className='content'>
-                    {routes.map((i, index) => {
+                    {/* {routes.map((i, index) => {
                         return IndexApp(i, index)
-                    })}
+                    })} */}
                 </div>
                 <IndexFooter />
             </div>

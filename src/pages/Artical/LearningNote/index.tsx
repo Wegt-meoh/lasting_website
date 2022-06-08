@@ -2,17 +2,17 @@ import { Button, Form, Input } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import axios from 'axios'
 import React, { ReactChild, useEffect, useState } from 'react'
-import { DocsifyContainer } from '../../components/DocsifyComponents'
-import { Header } from '../../components/DocsifyComponents/Header'
+import MarkdownSlice from '../../../components/MarkdownSlice'
+import { DocsifyContainer } from '../../../components/DocsifyComponents'
+import { Header } from '../../../components/DocsifyComponents/Header'
 
 export default function LearningNote() {
     return (
         <DocsifyContainer>
             <Header title='面试实战（北京司索科技技术面）' size='h1'>
                 <p>
-                    后端三个接口，判断哪个接口返回最快，三个接口的返回值时一样的。
-                    {f() as ReactChild}
-                </p>
+                    后端三个接口，判断哪个接口返回最快，三个接口的返回值时一样的。                    
+                </p>               
                 <p>
                     antd的form写一个简单的登陆界面，要求账号为邮箱格式，密最短为6位要求有提示。
                     点击按钮在控制台打印这些值。

@@ -1,41 +1,48 @@
 import React from "react"
 import { Link, RouteObject } from "react-router-dom"
-import CssLayoutPractice from "../pages/CssLayoutPractice"
-import DraggingList from "../pages/DraggingList"
-import Index from "../pages/Index"
-import LearningNote from "../pages/LearningNote"
-import Login from "../pages/Login"
-import PromiseImpl from "../pages/PromiseImpl"
-import RefDemo from "../pages/RefDemo"
-import RgbaToHex from "../pages/rgba2hex"
-import UseUserMedia from "../pages/UseUserMedia"
+import Artical from "../pages/Artical"
+import Knowlege from "../pages/Artical/Knowlege"
+import Main from "../pages/Main"
+import Product from "../pages/Product"
+import CssLayoutPractice from "../pages/Product/CssLayoutPractice"
+import DraggingList from "../pages/Product/DraggingList"
+import Login from "../pages/Product/Login"
+import UseUserMedia from "../pages/Product/UseUserMedia"
 
-interface customRouteObject extends RouteObject {
+interface customRouteObject extends Omit<RouteObject, 'children'> {
     title: string
     desc: string
+    classify: 'artical'|'product'|'other'
+    children?: customRouteObject[]
 }
-
-const EccLearning = React.lazy(() => import("../pages/EccLearning"))
 
 const routes: customRouteObject[] = [
-    { index: true, path: '/', element: <Index />, title: '主页', desc: '' },
-    { path: '*', element: <NoMatchPage />, title: '未匹配', desc: '' },
-    { path: '/app/rgba2hex', element: <RgbaToHex />, title: 'rgb2hex', desc: '' },
-    { path: '/app/eccLearning', element: <EccLearning />, title: '椭圆曲线ecc', desc: '' },
-    { path: '/app/login', element: <Login />, title: '登陆页面', desc: '拟态风格的登陆界面' },
-    { path: '/app/ref', element: <RefDemo />, title: 'useRef', desc: '' },
-    { path: '/app/draggingList', element: <DraggingList />, title: '拖动排序', desc: '一个拖动排序的列表' },
-    { path: '/app/userMedia', element: <UseUserMedia />, title: '摄像头', desc: '非本地调试的话，需要开启权限才能使用,请查看控制台' },
-    { path: '/app/cssPractice', element: <CssLayoutPractice />, title: 'css布局练习', desc: '' },
-    { path: '/app/learningNote', element: <LearningNote />, title: '学习笔记', desc: '' },
-    { path: '/app/promiseImpl', element: <PromiseImpl />, title: 'promise实现', desc: '' },
+    { index: true, path: '/', element: <Main />, title: '主页', desc: '', classify: 'other' },
+    {
+        path: '/product', element: <Product />,
+        title: '作品', desc: '', classify: 'other',
+    },
+    { path: '/artical', element: <Artical />, title: '文章', desc: '', classify: 'other' },
+    { path: '/cssLayoutPractice', element: <CssLayoutPractice />, title: 'css布局练习', desc: '', classify: 'product' },
+    { path: '/draggingList', element: <DraggingList />, title: '拖动列表', desc: '', classify: 'product' },
+    { path: '/loginDemo', element: <Login />, title: '登陆页面Demo', desc: '', classify: 'product' },
+    { path: '/useUserMedia', element: <UseUserMedia />, title: '摄像头拍照', desc: '', classify: 'product' }, 
+    { path: '/knowlege', element: <Knowlege />, title: '知识梳理', desc: '', classify: 'artical' },    
 ]
 
-function getAvailableRoutes() {
-    return routes.slice(2)
+function getProduct() {
+    return routes.filter((r) => {
+        return r.classify==='product'
+    })
 }
 
-function getAllRoutes(){
+function getArtical() {
+    return routes.filter((r) => {
+        return r.classify==='artical'
+    })
+}
+
+function getAllRoutes() {
     return routes
 }
 
@@ -48,5 +55,5 @@ function NoMatchPage() {
     )
 }
 
-export { getAvailableRoutes ,getAllRoutes }
+export { getProduct, getAllRoutes,getArtical }
 export type { customRouteObject }

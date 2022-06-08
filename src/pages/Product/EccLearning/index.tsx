@@ -1,7 +1,7 @@
 import React from 'react'
-import { DocsifyContainer } from '../../components/DocsifyComponents'
-import Code from '../../components/DocsifyComponents/Code'
-import { Header } from '../../components/DocsifyComponents/Header'
+import { DocsifyContainer } from '../../../components/DocsifyComponents'
+import Code from '../../../components/DocsifyComponents/Code'
+import { Header } from '../../../components/DocsifyComponents/Header'
 
 export default function EccLearning() {
     return (

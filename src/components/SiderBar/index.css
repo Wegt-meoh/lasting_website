@@ -1,0 +1,54 @@
+.siderbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--siderbar-height);
+    background-color: var(--black);
+    display: grid;
+    grid-template-columns: minmax(0,0.8fr) minmax(0,2fr) minmax(0,0.8fr); 
+    grid-template-rows: var(--siderbar-height);       
+}
+.innerbar{
+    grid-column: 2;
+    padding: 1rem 0;        
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.innerbar a>img{
+    width: 1.2rem;
+}
+
+.innerbar a{    
+    color:  var(--light-grey);
+    margin: 0 0.2rem;
+    border-radius: 0.2rem;
+    padding: 0.1rem 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerbar nav{
+    font-size: 0.6rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerbar>.brand{
+    font-size: 1rem;
+}
+
+.innerbar svg{
+    fill:white;
+}
+
+.innerbar a:hover{
+    color:  var(--light-grey);
+    background-color: var(--light-black);    
+}

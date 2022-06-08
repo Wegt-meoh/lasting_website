@@ -1,0 +1,23 @@
+footer{
+    background-color: var(--black);
+}
+
+.Footer{
+    display: grid;
+    grid-template-columns: minmax(0,0.8fr) minmax(0,2fr) minmax(0,0.8fr);
+}
+
+.Footer>div{
+    grid-column: 2;
+    display: flex;
+    gap: 0.5rem;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-grey);
+    font-size: 0.6rem;
+}
+.Footer>div>div{
+    text-align: center;
+    width: 100%;
+}

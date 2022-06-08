@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useDebouncing } from '../../utils/deBoucing'
-import { useThrotting } from '../../utils/throtting'
+import { useDebouncing } from '../../../utils/deBoucing'
+import { useThrotting } from '../../../utils/throtting'
 
 export default function RefDemo() {
   const inputText = useRef<HTMLInputElement>(null)

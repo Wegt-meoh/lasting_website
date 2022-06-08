@@ -1,0 +1,53 @@
+.Main h1{
+    color: white;
+}
+
+.Main p,.Main span{
+    color: var(--light-grey);
+}
+
+@media screen and (max-width:800px) {
+    .Main-content{
+        display: grid;
+        grid-template-rows: minmax(0,1fr) minmax(0,2fr);
+        grid-template-columns: auto;
+    }
+    
+    .Main-content>div{
+        grid-row: 2;
+    }
+    
+    .Main-content>img{
+        grid-row: 1;
+        margin: 1rem auto;
+        margin-left: 0;
+        width: 120px;
+    }
+}
+
+@media screen and (min-width:800px) {
+    .Main-content{
+        display: grid;
+        grid-template-columns: minmax(0,2fr) minmax(0,1fr);
+        grid-template-rows: auto;
+    }        
+    .Main-content>div{
+        grid-column: 1;
+    }    
+    .Main-content>img{
+        margin-left: 2rem;
+        grid-column: 2;
+        width: 250px;
+    }
+}
+
+.Main-content{
+    padding-top: 4rem;
+    padding-bottom: 2rem;    
+}
+
+.Main-content>img{    
+    border: 1px solid var(--black);
+    border-radius: 1rem;   
+    max-width: 100%;
+}

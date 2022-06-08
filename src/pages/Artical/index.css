@@ -1,0 +1,21 @@
+.Artical{
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+.Artical>header{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Artical>header>h1{
+    color: white;
+    font-size: 2rem;
+}
+
+.Artical>header>p{
+    color: var(--light-grey);
+    font-size: 1rem;
+}

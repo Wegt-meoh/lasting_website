@@ -55,7 +55,7 @@ html {
     width: 4px;
 }
 
-.Docsify-sider:-webkit-scrollbar-thumb,
+.Docsify-sider::-webkit-scrollbar-thumb,
 .Docsify-sider:hover::-webkit-scrollbar-track {
     background-color: transparent;
 }
