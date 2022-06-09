@@ -40,21 +40,23 @@
 ### 下载reactJS的步骤
 
 1. 进入<a href='https://reactjs.org/'>react官网</a>按下图依次点击链接
+   
 <img src='/mdFiles/knowlage/images/001.png' />
 <img src='/mdFiles/knowlage/images/002.png' />
 
-1. 下图中的链接就是下载源，这里我点击第一个链接
+2. 下图中的链接就是下载源，这里我点击第一个链接
+   
 <img src='/mdFiles/knowlage/images/003.png' />
 
-1. 进入到下面这个页面后点击，你想要下载的js文件
+3. 进入到下面这个页面后点击，你想要下载的js文件
 
 <img src='/mdFiles/knowlage/images/004.png'/>
 
-1. 然后进入预览页面
+4. 然后进入预览页面
 
 <img src='/mdFiles/knowlage/images/005.png'/>
 
-1. 修改浏览器地址栏内容如下图，然后键入回车浏览，这个地址就是我们要的地址，用wget命令下载到你需要的位置即可
+5. 修改浏览器地址栏内容如下图，然后键入回车浏览，这个地址就是我们要的地址，用wget命令下载到你需要的位置即可
 
 <img src='/mdFiles/knowlage/images/006.png'/>
 

@@ -1,6 +1,9 @@
 .dark{
+    --primary:var(--light-black);
+    --color:var(--light-grey);
     --blockquote-border-color:rgb(121, 187, 139);
     --blockquote-background-color:grey;
+    --blockquote-color:var(--light-grey);
     --hr-color:grey;
     --anchor-color:skyblue;
     --anchor-color-hover:white;
@@ -10,63 +13,20 @@
     --h1-color:white;
     --h2-color:var(--oringe);
     --h3-color:var(--oringe);
+    --p-color:var(--color);
+    --card-color:var(--light-grey);
+    --card-bgcolor:var(--black);
+    --card-border-color:black;
     --code-bgcolor:var(--black);
     --code-border-color:grey;
 }
 
 .dark{
-    background-color: var(--light-dark);
-    color: var(--light-grey);
+    background-color: var(--primary);
+    color: var(--color);
 }
 
-.dark .md hr{
-    border: none;
-    outline: none;    
-    border-bottom: 1px solid var(--hr-color);
-}
-
-.dark .md blockquote{    
-    border-color: var(--blockquote-border-color);
-    background-color: var(--blockquote-background-color);
-    color: var(--light-grey);
-}
-
-.dark .md p{
-    color: var(--light-grey);
-}
-
-.dark .md h1{
-    color: var(--h1-color);
-}
-
-.dark .md h2{
-    color: var(--h2-color);
-}
-
-.dark .md h3{
-    color: var(--h3-color);
-}
-
-.dark .md a
-{
-    color: var(--anchor-color);
-    text-decoration: underline;
-}
-
-.dark .md a:hover{
-    color: var(--anchor-color-hover);
-    background-color: var(--anchor-bgcolor-hover);
-}
-
-.dark .md li::marker{    
-    color: var(--li-marker-color);
-}
-
-.dark pre:hover::-webkit-scrollbar-thumb{
-    background-color: var(--scrollbar-thumb-color);
-}
-
-.dark .md pre{
-    background-color: var(--code-bgcolor);
-    border-color: var(--code-border-color);;    
+.dark .Product>section a>span:hover{
+    border-color: var(--oringe);
+    color: var(--oringe);
 }

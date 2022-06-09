@@ -18,11 +18,11 @@ export default function Product() {
           return (
             <Card key={r.path}>
               <h3>{r.title}</h3>
-              <Link to={r.path===undefined?'':r.path}>
-                <Card>
-                  demo
-                </Card>
-              </Link>
+              <div>
+                <Link to={r.path === undefined ? '' : r.path}>
+                  <span>demo</span>
+                </Link>
+              </div>
             </Card>)
         })}
       </section>

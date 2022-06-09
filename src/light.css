@@ -1,84 +1,32 @@
-/* @import '~highlight.js/styles/github.css';
-
-.newMoon{
-    background-color: #ffecc1;
+.dark{
+    --primary:var(--light-black);
+    --color:var(--light-grey);
+    --blockquote-border-color:rgb(121, 187, 139);
+    --blockquote-background-color:grey;
+    --blockquote-color:var(--light-grey);
+    --hr-color:grey;
+    --anchor-color:skyblue;
+    --anchor-color-hover:white;
+    --anchor-bgcolor-hover:rgb(199, 157, 255);
+    --li-marker-color: var(--light-grey);
+    --scrollbar-thumb-color:grey;
+    --h1-color:white;
+    --h2-color:var(--oringe);
+    --h3-color:var(--oringe);
+    --p-color:var(--color);
+    --card-color:var(--light-grey);
+    --card-bgcolor:var(--black);
+    --card-border-color:black;
+    --code-bgcolor:var(--black);
+    --code-border-color:grey;
 }
 
-.code-slice-container{
-    position: relative;
-    height: fit-content;        
-    font-size: 1rem;
-}
-.md{    
-    padding: 2rem;
-    font-size: 1rem;
+.dark{
+    background-color: var(--primary);
+    color: var(--color);
 }
 
-.newMoon .md hr{
-    border: none;
-    outline: none;    
-    border-bottom: 1px solid #6b4a00;
+.dark .Product>section a>span:hover{
+    border-color: var(--oringe);
+    color: var(--oringe);
 }
-
-.md img{
-    width: 36rem;
-}
-
-.md ul,.md ol{
-    padding-left: 2rem;
-}
-
-.newMoon .md blockquote{
-    border-left: 3px solid #7ccd01;
-    background-color: #fff9c9;
-    color: #868686;
-}
-
-.newMoon .md a
-{
-    color: #373c47;
-    text-decoration: underline;
-}
-
-.newMoon .md a:hover{
-    color: white;
-    background-color: rgb(199, 157, 255);
-}
-
-.newMoon .md li::marker{    
-    color: rgb(166, 98, 255);
-}
-
-.newMoon{
-    background-color: #fffbdb;
-}
-
-pre{ 
-    border-radius: 0.6rem;
-    padding: 1rem;
-    margin: 1rem;
-}
-
-pre::-webkit-scrollbar{
-    width: auto;
-    height: 3px;
-}
-
-.newMoon pre:hover::-webkit-scrollbar-thumb{
-    background-color: red;
-}
-
-pre::-webkit-scrollbar-thumb,
-pre::-webkit-scrollbar-track{
-    background-color: transparent;
-}
-
-.copy-button{
-    width: 1.6rem;
-    height: 1.6rem;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    cursor: pointer; 
-    background: url('/public/icons/copyButton.svg') no-repeat center/80%;       
-} */
