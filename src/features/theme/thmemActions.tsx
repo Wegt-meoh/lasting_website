@@ -1,1 +1,1 @@
-export const changeThemeAction=()=>({type:'switch'})
+export const changeThemeAction=()=>({type:'theme/changeTheme'})
