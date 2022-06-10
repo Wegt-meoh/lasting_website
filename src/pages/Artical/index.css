@@ -3,21 +3,6 @@
     padding-bottom: 2rem;
 }
 
-.Artical>header{
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.Artical>header>h1{
-    font-size: 2rem;
-}
-
-.Artical>header>p{
-    font-size: 1rem;
-}
-
 .Artical>section{
     padding-top: 2rem;
     display: flex;
@@ -39,28 +24,17 @@
     text-decoration: none;
 }
 
+.ArticalItem:hover{
+    background-color: var(--dark-bgcolor);
+}
+
 .ArticalItem>h3{
+    color: var(--strong-color);
     margin: 0;    
     font-size: 1rem;
 }
 
 .ArticalItem>span{
-    color: grey;
+    color: var(--dark-font-color);
     font-size: 0.6rem;
-}
-
-.dark .ArticalItem>h3{
-    color: var(--oringe);
-}
-
-.dark .ArticalItem:hover{
-    background-color: var(--black);
-}
-
-.dark .Artical>header>h1{
-    color: white;
-}
-
-.dark .Artical>header>p{
-    color: var(--light-grey);
 }

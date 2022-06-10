@@ -21,6 +21,11 @@
     background-color: var(--black);
 }
 
+::selection{
+    background-color: var(--strong-color);
+    color: var(--dark-bgcolor);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -56,7 +61,7 @@ code {
 
     .App{
         display: grid;   
-        grid-template-columns: minmax(0,0.6fr) minmax(0,2fr) minmax(0,0.6fr);
+        grid-template-columns: minmax(0,0.5fr) minmax(0,2fr) minmax(0,0.5fr);
         grid-template-rows: auto var(--footer-height) ;
     }
 }
@@ -71,7 +76,8 @@ code {
 
 :root{
     --siderbar-height:60px;
-    --footer-height:120px;
+    --footer-height:160px;
+
     --black:rgb(30, 30, 30);
     --light-black:rgb(40, 44, 52);
     --light-grey:rgb(236, 236, 236);
@@ -79,7 +85,9 @@ code {
 }
 
 .App{
-    margin-top: var(--siderbar-height);
+    background-color: var(--bgcolor);
+    color: var(--font-color);
+    margin-top: var(--siderbar-height);    
 }
 
 .App>main{
@@ -98,11 +106,6 @@ code {
     grid-row: 2;
 }
 
-.code-slice-container{
-    position: relative;
-    height: fit-content;        
-    font-size: 1rem;
-}
 .md{    
     padding: 2rem;
     font-size: 1rem;
@@ -111,11 +114,11 @@ code {
 .md hr{
     border: none;
     outline: none;    
-    border-bottom: 1px solid var(--hr-color);
+    border-bottom: 1px solid var(--font-color);
 }
 
 .md p{
-    color: var(--color);
+    color: var(--font-color);
 }
 
 .md a
@@ -135,17 +138,17 @@ code {
 
 .md h1{
     margin: 2rem auto;
-    color: var(--h1-color);
+    color: var(--font-color);
 }
 
 .md h2{
     margin: 1.5rem auto;
-    color: var(--h2-color);
+    color: var(--font-color);
 }
 
 .md h3,.md h4,.md h5,.md h6{
     margin: 1rem auto;
-    color: var(--h3-color);
+    color: var(--font-color);
 }
 
 .md img{
@@ -158,7 +161,7 @@ code {
     border-left: 4px solid;
 
     border-color: var(--blockquote-border-color);
-    background-color: var(--blockquote-background-color);
+    background-color: var(--blockquote-bgcolor);
     color: var(--blockquote-color);
 }
 

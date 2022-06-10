@@ -1,0 +1,16 @@
+.Header{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Header>h1{
+    color: var(--h1-color);
+    font-size: 2rem;
+}
+
+.Header>p{
+    color: var(--p-color);
+    font-size: 1rem;
+}

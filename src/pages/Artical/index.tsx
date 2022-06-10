@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Header from '../../components/Header'
 import { getArtical } from '../../route/routes'
 import './index.css'
 
@@ -8,10 +9,7 @@ export default function Artical() {
 
   return (
     <div className='Artical'>
-      <header>
-        <h1>Artical</h1>
-        <p>知识梳理笔记，都是用markdown书写再用 marked.js，highlight.js 转化成html</p>
-      </header>
+      <Header h1='Artical' p='知识梳理笔记，都是用markdown书写再用 marked.js，highlight.js 转化成html'/>
       <section>
         {routes.map((r, index) => {
           return <ArticalItem key={index} path={r.path} title={r.title} date={r.date} />

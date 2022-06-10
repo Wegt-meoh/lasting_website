@@ -17,6 +17,13 @@ export default function App() {
 
   useEffect(()=>{
     setAppClassName(`App ${theme}`)
+    if(theme==='dark'){
+      document.body.style.backgroundColor='rgb(40, 44, 52)'
+    }else if(theme==='light'){
+      document.body.style.backgroundColor='white'
+    }else{
+      document.body.style.backgroundColor='#ebdbb2'
+    }
   },[theme])
 
   return (

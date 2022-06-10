@@ -1,32 +1,23 @@
-.dark{
-    --primary:var(--light-black);
-    --color:var(--light-grey);
-    --blockquote-border-color:rgb(121, 187, 139);
-    --blockquote-background-color:grey;
-    --blockquote-color:var(--light-grey);
-    --hr-color:grey;
+.dark{    
+    --bgcolor:var(--light-black);
+    --dark-bgcolor:var(--black);
+    --strong-color:var(--oringe);
+    --font-color:var(--light-grey);
+    --dark-font-color:grey;
+    --card-bgcolor:var(--dark-bgcolor);
+    --card-border-color:black;
+    --nav-hover-bgcolor:grey;
+    --nav-hover-color:white;
+    --svg-fill-color:white;
+
+    --li-marker-color: var(--light-grey);
     --anchor-color:skyblue;
     --anchor-color-hover:white;
     --anchor-bgcolor-hover:rgb(199, 157, 255);
-    --li-marker-color: var(--light-grey);
-    --scrollbar-thumb-color:grey;
-    --h1-color:white;
-    --h2-color:var(--oringe);
-    --h3-color:var(--oringe);
-    --p-color:var(--color);
-    --card-color:var(--light-grey);
-    --card-bgcolor:var(--black);
-    --card-border-color:black;
-    --code-bgcolor:var(--black);
+    --code-bgcolor:var(--dark-bgcolor);
     --code-border-color:grey;
-}
-
-.dark{
-    background-color: var(--primary);
-    color: var(--color);
-}
-
-.dark .Product>section a>span:hover{
-    border-color: var(--oringe);
-    color: var(--oringe);
+    --scrollbar-thumb-color:grey;
+    --blockquote-border-color:rgb(121, 187, 139);
+    --blockquote-bgcolor:grey;
+    --blockquote-color:var(--light-grey);
 }
