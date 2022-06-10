@@ -1,7 +1,7 @@
 .light{    
     --bgcolor:white;
     --dark-bgcolor:var(--light-grey);
-    --strong-color:var(--oringe);
+    --strong-color:black;
     --font-color:var(--light-black);
     --dark-font-color:black;
     --card-bgcolor:var(--dark-bgcolor);
@@ -16,8 +16,9 @@
     --anchor-bgcolor-hover:rgb(199, 157, 255);
     --code-bgcolor:var(--dark-bgcolor);
     --code-border-color:grey;
-    --scrollbar-thumb-color:grey;
+    --scrollbar-thumb-color:var(--code-border-color);
+    --scrollbar-track-bgcolor:black;
     --blockquote-border-color:skyblue;
     --blockquote-bgcolor:var(--light-grey);
-    --blockquote-color:var(--light-grey);
+    --blockquote-color:var(--font-color);
 }

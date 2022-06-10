@@ -14,7 +14,7 @@
 .innerbar{
     grid-column: 2;
 
-    color:var(--font-color);
+    color:var(--dark-font-color);
     font-size: 0.6rem;
     
     padding: 1rem 0;     

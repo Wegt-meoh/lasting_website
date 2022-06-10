@@ -6,11 +6,11 @@
 }
 
 .Header>h1{
-    color: var(--h1-color);
+    color: var(--font-color);
     font-size: 2rem;
 }
 
 .Header>p{
-    color: var(--p-color);
+    color: var(--dark-font-color);
     font-size: 1rem;
 }

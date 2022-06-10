@@ -16,8 +16,9 @@
     --anchor-bgcolor-hover:rgb(199, 157, 255);
     --code-bgcolor:var(--dark-bgcolor);
     --code-border-color:grey;
-    --scrollbar-thumb-color:grey;
+    --scrollbar-thumb-bgcolor:var(--code-border-color);
+    --scrollbar-track-bgcolor:black;
     --blockquote-border-color:rgb(121, 187, 139);
     --blockquote-bgcolor:grey;
-    --blockquote-color:var(--light-grey);
+    --blockquote-color:var(--font-color);
 }
