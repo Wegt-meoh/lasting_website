@@ -3,8 +3,8 @@ import React from 'react'
 import './index.css'
 
 interface HeaderProps{
-    h1:string
-    p:string
+    h1:React.ReactElement|string
+    p:React.ReactElement|string
 }
 
 export default function Header(props:HeaderProps) {
