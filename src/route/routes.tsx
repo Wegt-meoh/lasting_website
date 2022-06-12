@@ -2,7 +2,6 @@ import React from "react"
 import { Link, RouteObject } from "react-router-dom"
 import MarkdownSlice from "../components/MarkdownSlice"
 import Artical from "../pages/Artical"
-import CssNote from "../pages/Artical/CssNote"
 import Knowlege from "../pages/Artical/Knowlege"
 import Main from "../pages/Main"
 import Product from "../pages/Product"
@@ -22,6 +21,7 @@ interface customRouteObject extends Omit<RouteObject, 'children'> {
 }
 
 const routes: customRouteObject[] = [
+    { path: '*', element: <NoMatchPage />, title: '主页', desc: '', classify: 'other' },
     { index: true, path: '/', element: <Main />, title: '主页', desc: '', classify: 'other' },
     {
         path: '/product', element: <Product />,
