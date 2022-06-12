@@ -5,10 +5,10 @@
     --font-color:#ca9d32;
     --dark-font-color:#8e670b;
     --card-bgcolor:var(--dark-bgcolor);
-    --card-border-color:black;
+    --card-border-color:var(--dark-font-color);
     --nav-hover-bgcolor:var(--oringe);
     --nav-hover-color:white;
-    --svg-fill-color:black;
+    --svg-fill-color:var(--light-grey);
 
     --li-marker-color: var(--dark-oringe);
     --anchor-color: grey;
