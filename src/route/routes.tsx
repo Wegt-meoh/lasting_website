@@ -8,6 +8,7 @@ import Main from "../pages/Main"
 import Product from "../pages/Product"
 import CssLayoutPractice from "../pages/Product/CssLayoutPractice"
 import DraggingList from "../pages/Product/DraggingList"
+import ExpandingCards from "../pages/Product/Expanding-cards"
 import Login from "../pages/Product/Login"
 import UseUserMedia from "../pages/Product/UseUserMedia"
 
@@ -33,6 +34,7 @@ const routes: customRouteObject[] = [
     { path: '/knowlege', element: <Knowlege />, title: '知识梳理', desc: '', classify: 'artical', date: '2022 06 08' },
     { path: '/cssNote', element: <MarkdownSlice src='/mdFiles/cssNote/note.md' alt={'loading...'} languageSubset={['css']} />, title: 'css选择器', desc: '', classify: 'artical', date: '2022 06 10' },
     { path: '/other', element: <MarkdownSlice src='/mdFiles/otherNote/note.md' alt={'loading...'} languageSubset={['css']} />, title: '网络安全', desc: '', classify: 'artical', date: '2022 06 11' },
+    { path: '/expandingCards', element: <ExpandingCards/>, title: 'expaning cards', desc: '', classify: 'product', date: '2022 06 11' },    
 ]
 
 function getProduct() {

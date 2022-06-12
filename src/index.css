@@ -11,6 +11,7 @@
 
 ::-webkit-scrollbar{
     width: 8px;
+    height: 3px;
 }
 
 ::-webkit-scrollbar-thumb{
@@ -94,9 +95,6 @@ code {
 .App>main{
     grid-column: 2;
     grid-row: 1;
-
-    display: flex;
-    flex-flow: column nowrap;
 }
 
 .App>footer{
