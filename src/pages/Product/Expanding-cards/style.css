@@ -8,51 +8,48 @@ body {
   font-family: 'Muli', sans-serif;
 }
 
-.container {
-  display: flex;
+.ExpandingCards{  
+  padding: 20px 0;
   width: 100%;
-  height: 400px;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
 }
 
-.panel {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;  
-  border-radius: 50px;
-  color: #fff;
-  cursor: pointer;
-  flex: 0.5;
-  margin: 10px;
+.ExpandingCards>.panel{
   position: relative;
-  -webkit-transition: all 700ms ease-in;
-  transition: all 700ms ease-in;
+
+  height: 400px;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 40px;
+  cursor: pointer;
+
+  color: white;
+  transition: all 0.7s ease-in;
+  -webkit-transition: all 0.7s ease-in;
 }
 
-.panel h3 {
-  font-size: 24px;
+.ExpandingCards>.panel>h3{
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 20px;
-  margin: 0;
+  width: max-content;  
   opacity: 0;
+  transition: opacity 0.5s ease-in 0.5s;
 }
 
-.panel.active {
-  flex: 5;
+.ExpandingCards>.active{
+  flex: 6;
 }
 
-.panel.active h3 {
+.ExpandingCards>.active h3{
   opacity: 1;
-  transition: opacity 0.3s ease-in 0.4s;
 }
 
-@media (max-width: 480px) {
-  .container {
-    height: 460px;
+@media screen and (max-width:500px) {
+  .ExpandingCards{
     flex-flow: column nowrap;
-  } 
-
-  .panel.active {
-    flex: 2;
+    height: 400px;
   }
 }
