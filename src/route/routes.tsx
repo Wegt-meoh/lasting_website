@@ -8,8 +8,10 @@ import Product from "../pages/Product"
 import CssLayoutPractice from "../pages/Product/CssLayoutPractice"
 import DraggingList from "../pages/Product/DraggingList"
 import ExpandingCards from "../pages/Product/Expanding-cards"
+import HiddenSearch from "../pages/Product/hidden-search"
 import Login from "../pages/Product/Login"
 import ProgressSteps from "../pages/Product/Progress-steps"
+import RotatingNavAnimation from "../pages/Product/rotating-nav-animation"
 import UseUserMedia from "../pages/Product/UseUserMedia"
 
 interface customRouteObject extends Omit<RouteObject, 'children'> {
@@ -37,6 +39,8 @@ const routes: customRouteObject[] = [
     { path: '/other', element: <MarkdownSlice src='/mdFiles/otherNote/note.md' alt={'loading...'} languageSubset={['css']} />, title: '网络安全', desc: '', classify: 'artical', date: '2022 06 11' },
     { path: '/expandingCards', element: <ExpandingCards />, title: 'expaning cards', desc: '', classify: 'product', date: '2022 06 12' },
     { path: '/progressStep', element: <ProgressSteps />, title: 'pregress steps', desc: '', classify: 'product', date: '2022 06 12' },
+    { path: '/RotatingNavAnimation', element: <RotatingNavAnimation />, title: 'Rotating nav animation', desc: '', classify: 'product', date: '2022 06 13' },
+    { path: '/HiddenSearch', element: <HiddenSearch />, title: 'Hidden search', desc: '', classify: 'product', date: '2022 06 13' },
 ]
 
 function getProduct() {

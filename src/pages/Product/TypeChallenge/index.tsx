@@ -5,7 +5,7 @@ export default function TypeChallenge() {
     // 类型体操
     // 第一题：假如泛型变量T是 () => infer R的`子集`，那么返回 通过infer获取到的函数返回值，否则返回boolean类型
     // 原文：https://www.songma.com/news/txtlist_i64599v.html
-    type IsFunc<T> = T extends () => infer R ? R : boolean
+    type IsFunc<T> = T extends () => infer R ? R : never
     type Func = IsFunc<''>
     type Func2 = IsFunc<number>
     type Func3 = IsFunc<() => number>
