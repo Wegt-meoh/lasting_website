@@ -2,89 +2,81 @@
 
 .ProgressSteps {
   --line-border-fill: var(--dark-font-color);
-  --line-border-empty: #d6d6d6;
+  --line-border-empty: #e0e0e0;
 }
 
-.ProgressSteps {
-  font-family: 'Muli', sans-serif;
+.ProgressSteps{
   display: flex;
   flex-flow: column nowrap;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 40px 0;
 }
 
-.progress-container {
-  display: flex;
-  justify-content: space-between;
+.progress-container{
   position: relative;
-  margin-bottom: 30px;
-  max-width: 100%;
-  width: 350px;
-}
-
-.progress-container::before {
-  content: '';
-  background-color: var(--line-border-empty);
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  height: 4px;
-  width: 100%;
-}
-
-.progress {
-  background-color: var(--line-border-fill);
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  height: 4px;
-  width: 0%;
-  transition: 0.4s ease;
-}
-
-.circle {
-  background-color: #fff;
-  color: #999;
-  border-radius: 50%;
-  height: 30px;
-  width: 30px;
+  width: 300px;
   display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  border: 3px solid var(--line-border-empty);
-  transition: 0.4s ease;
-  z-index: 10;
 }
 
-.circle.active {
+.progress-container:before,#progress{
+  position: absolute;
+  top: 50%;
+  transform: translate(0,-50%);
+  height: 3px;  
+}
+
+.progress-container:before{
+  content: '';
+  width: 100%;
+  background-color: var(--line-border-empty);
+  z-index: 1;
+}
+
+#progress{
+  width:0;
+  background-color: var(--line-border-fill);
+  z-index: 2;
+  transition: width 0.5s ease;  
+  -webkit-transition: width 0.5s ease;
+}
+
+.circle{
+  font-size: 24px;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bgcolor);
+  border: 3px solid var(--line-border-empty);
+  transition: border-color 0.7s ease-in;  
+  -webkit-transition: border-color 0.7s ease-in;
+}
+
+.circle.active{
   border-color: var(--line-border-fill);
 }
 
-.btn {
-  background-color: var(--line-border-fill);
-  color: #fff;
-  border: 0;
-  border-radius: 6px;
-  cursor: pointer;
-  font-family: inherit;
-  padding: 8px 30px;
-  margin: 5px;
-  font-size: 14px;
+.progress-buttons>.btn{
+  margin: 10px;
+  width: 60px;
+  height: 30px;
+  background-color: var(--dark-bgcolor);
+  outline: none;
+  border: none;
 }
 
-.btn:active {
-  transform: scale(0.98);
+.progress-buttons>.btn:active{
+  transform: scale(98%);
 }
 
-.btn:focus {
-  outline: 0;
-}
-
-.btn:disabled {
+.progress-buttons>.btn:disabled{
   background-color: var(--line-border-empty);
   cursor: not-allowed;
 }

@@ -6,56 +6,45 @@ import './style.css'
 export default function ProgressSteps() {
 
     useEffect(() => {
-        const ProgressSteps=document.getElementById('ProgressSteps') as HTMLElement
-        const progress = ProgressSteps.querySelector('#progress') as HTMLElement
-        const prev = ProgressSteps.querySelector('#prev') as HTMLButtonElement
-        const next = ProgressSteps.querySelector('#next') as HTMLButtonElement
-        const circles = ProgressSteps.querySelectorAll('.circle')
+        const ProgressSteps = document.getElementById('ProgressSteps') as HTMLDivElement
+        const progress=document.getElementById('progress') as HTMLDivElement
+        const prevBtn =ProgressSteps.getElementsByClassName('prevBtn')[0] as HTMLButtonElement
+        const nextBtn =ProgressSteps.getElementsByClassName('nextBtn')[0] as HTMLButtonElement
+        const circles=ProgressSteps.getElementsByClassName('circle')        
 
-        const update = () => {
-            circles.forEach((circle, idx) => {
-                if (idx < currentActive) {
-                    circle.classList.add('active')
-                } else {
-                    circle.classList.remove('active')
+        let rate=0;
+
+        prevBtn.addEventListener('click',()=>{
+            if(rate===0) return
+            rate--
+            update()
+        })
+
+        nextBtn.addEventListener('click',()=>{
+            if(rate===circles.length-1) return
+            rate++
+            update()
+        })
+
+        const update=()=>{
+            for(let i=0;i<circles.length;i++){
+                if(i<=rate){
+                    circles[i].classList.add('active')
+                }else{
+                    circles[i].classList.remove('active')
                 }
-            })
-                        
-            const actives = ProgressSteps.querySelectorAll('.active')
-
-            progress!.style.width = (actives.length - 1) / (circles.length - 1) * 100 + '%'
-
-            if (currentActive === 1) {
-                prev.disabled = true
-            } else if (currentActive === circles.length) {
-                next.disabled = true
-            } else {
-                prev.disabled = false
-                next.disabled = false
+            }
+            progress.style.width=`${rate/(circles.length-1)*100.0}%`
+            if(rate===0){
+                prevBtn.disabled=true                
+            }else if(rate===circles.length-1){
+                nextBtn.disabled=true
+            }else{
+                prevBtn.disabled=false
+                nextBtn.disabled=false
             }
         }
 
-        let currentActive = 1
-
-        next.addEventListener('click', () => {
-            currentActive++
-
-            if (currentActive > circles.length) {
-                currentActive = circles.length
-            }
-
-            update()
-        })
-
-        prev.addEventListener('click', () => {
-            currentActive--
-
-            if (currentActive < 1) {
-                currentActive = 1
-            }
-
-            update()
-        })
     }, [])
     return (
         <>
@@ -71,8 +60,8 @@ export default function ProgressSteps() {
                 </div>
 
                 <div className='progress-buttons'>
-                    <button className="btn" id="prev" disabled>Prev</button>
-                    <button className="btn" id="next">Next</button>
+                    <button className="btn prevBtn" disabled>Prev</button>
+                    <button className="btn nextBtn" >Next</button>
                 </div>
             </div>
         </>
