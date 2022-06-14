@@ -5,30 +5,26 @@ import './style.css'
 export default function BlurryLoading() {
 
     useEffect(() => {
-        const loadText = document.querySelector('.loading-text') as HTMLDivElement
-        const bg = document.querySelector('.bg') as HTMLElement
+        const BlurryLoading = document.getElementById('BlurryLoading') as HTMLDivElement
+        const bg = BlurryLoading.getElementsByClassName('bg')[0] as HTMLElement
+        const text=BlurryLoading.getElementsByClassName('loading-text')[0] as HTMLDivElement
 
-        let load = 0
+        let current=1
 
-        let int = setInterval(blurring, 30)
-
-        function blurring() {
-            load++
-
-            if (load > 99) {
-                clearInterval(int)
+        const interv = setInterval(() => {
+            text.innerHTML=`${parseInt(String(scale(current,1,100,1,100)))}%`
+            text.style.opacity=`${parseInt(String(scale(current,1,100,100,0)))}%`
+            bg.style.filter=`blur(${parseInt(String(scale(current,1,100,30,0)))}px)`
+            current++
+            if(current>100){
+                clearInterval(interv)
+                text.innerHTML=''
             }
+        },30)
 
-            loadText.innerText = `${load}%`
-            loadText.style.opacity = String(scale(load, 0, 100, 1, 0))
-            bg.style.filter = `blur(${scale(load, 0, 100, 30, 0)}px)`
+        const scale = (current: number, inStart: number, inEnd: number, outStar: number, outEnd: number): number => {
+            return (current - inStart) / (inEnd - inStart) * (outEnd - outStar) + outStar
         }
-
-        // https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
-        const scale = (num:number, in_min:number, in_max:number, out_min:number, out_max:number) => {
-            return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
-        }
-
     }, [])
 
     return (
