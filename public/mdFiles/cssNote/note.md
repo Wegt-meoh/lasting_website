@@ -27,3 +27,11 @@
 2. 子选择`.father>.child`
 3. 相邻选择`.bro1+.bro2`，选择紧挨在bro1后面的bro2
 4. 后续兄弟选择`h1 ~ p`，选择h1后面所有同级的p
+
+## Css书写顺序
+
+1. 位置属性(position,right,top,z-index,display,float)
+2. 大小(width,height,padding,margin)
+3. 文字(font,line-height,letter-spacing,color,text-align)
+4. 背景(background,border)
+5. 其他(animation,transition)
