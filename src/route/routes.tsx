@@ -5,6 +5,7 @@ import Artical from "../pages/Artical"
 import Knowlege from "../pages/Artical/Knowlege"
 import Main from "../pages/Main"
 import Product from "../pages/Product"
+import BlurryLoading from "../pages/Product/Blurry-Loading"
 import CssLayoutPractice from "../pages/Product/CssLayoutPractice"
 import DraggingList from "../pages/Product/DraggingList"
 import ExpandingCards from "../pages/Product/Expanding-cards"
@@ -41,6 +42,7 @@ const routes: customRouteObject[] = [
     { path: '/progressStep', element: <ProgressSteps />, title: 'pregress steps', desc: '', classify: 'product', date: '2022 06 12' },
     { path: '/RotatingNavAnimation', element: <RotatingNavAnimation />, title: 'Rotating nav animation', desc: '', classify: 'product', date: '2022 06 13' },
     { path: '/HiddenSearch', element: <HiddenSearch />, title: 'Hidden search', desc: '', classify: 'product', date: '2022 06 13' },
+    { path: '/BlurryLoading', element: <BlurryLoading />, title: 'Blurry Loading', desc: '', classify: 'product', date: '2022 06 14' },
 ]
 
 function getProduct() {
