@@ -13,6 +13,7 @@ import HiddenSearch from "../pages/Product/hidden-search"
 import Login from "../pages/Product/Login"
 import ProgressSteps from "../pages/Product/Progress-steps"
 import RotatingNavAnimation from "../pages/Product/rotating-nav-animation"
+import ScrollAnimation from "../pages/Product/Scroll-animation"
 import UseUserMedia from "../pages/Product/UseUserMedia"
 
 interface customRouteObject extends Omit<RouteObject, 'children'> {
@@ -43,6 +44,7 @@ const routes: customRouteObject[] = [
     { path: '/RotatingNavAnimation', element: <RotatingNavAnimation />, title: 'Rotating nav animation', desc: '', classify: 'product', date: '2022 06 13' },
     { path: '/HiddenSearch', element: <HiddenSearch />, title: 'Hidden search', desc: '', classify: 'product', date: '2022 06 13' },
     { path: '/BlurryLoading', element: <BlurryLoading />, title: 'Blurry Loading', desc: '', classify: 'product', date: '2022 06 14' },
+    { path: '/ScrollAnimation', element: <ScrollAnimation />, title: 'Scroll Animation', desc: '', classify: 'product', date: '2022 06 14' },
 ]
 
 function getProduct() {
