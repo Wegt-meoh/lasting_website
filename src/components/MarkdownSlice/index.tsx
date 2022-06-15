@@ -41,6 +41,24 @@ export default function MarkdownSlice(props: MarkdownSliceProps) {
         })
     }, [src, languageSubset])
 
+    useEffect(()=>{
+        const observer=new IntersectionObserver((entries)=>{
+            entries.forEach(e=>{
+                if(e.isIntersecting){
+                    const target=e.target as HTMLImageElement
+                    const dataSrc=target.getAttribute('data-src')
+                    target.src=dataSrc===null?'':dataSrc
+                    observer.unobserve(target)
+                }
+            })
+        })
+        const md=document.getElementsByClassName('md')[0]
+        const images=md.querySelectorAll('img')
+        images.forEach(i=>{
+            observer.observe(i)
+        })
+    },[content])
+
     return (     
         <div dangerouslySetInnerHTML={{ __html: content }} className='md' />
     )

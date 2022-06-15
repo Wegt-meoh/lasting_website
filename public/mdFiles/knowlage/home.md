@@ -41,24 +41,24 @@
 
 1. 进入<a href='https://reactjs.org/'>react官网</a>按下图依次点击链接
    
-<img src='/mdFiles/knowlage/images/001.png' />
-<img src='/mdFiles/knowlage/images/002.png' />
+<img data-src='/mdFiles/knowlage/images/001.png' src='/mdFiles/knowlage/images/001.png' />
+<img data-src='/mdFiles/knowlage/images/002.png' src='/mdFiles/knowlage/images/001.png' />
 
 2. 下图中的链接就是下载源，这里我点击第一个链接
    
-<img src='/mdFiles/knowlage/images/003.png' />
+<img data-src='/mdFiles/knowlage/images/003.png' src='/mdFiles/knowlage/images/001.png' />
 
 3. 进入到下面这个页面后点击，你想要下载的js文件
 
-<img src='/mdFiles/knowlage/images/004.png'/>
+<img data-src='/mdFiles/knowlage/images/004.png' src='/mdFiles/knowlage/images/001.png'/>
 
 4. 然后进入预览页面
 
-<img src='/mdFiles/knowlage/images/005.png'/>
+<img data-src='/mdFiles/knowlage/images/005.png' src='/mdFiles/knowlage/images/001.png'/>
 
 5. 修改浏览器地址栏内容如下图，然后键入回车浏览，这个地址就是我们要的地址，用wget命令下载到你需要的位置即可
 
-<img src='/mdFiles/knowlage/images/006.png'/>
+<img data-src='/mdFiles/knowlage/images/006.png' src='/mdFiles/knowlage/images/001.png'/>
 
 ### Linux chmod 修改权限
 
