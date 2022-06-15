@@ -1,24 +1,24 @@
-.newMoon{    
-    --bgcolor:#ebdbb2;
+.newMoon {
+    --bgcolor: #ebdbb2;
     --dark-bgcolor: #e1bc65;
-    --strong-color:var(--dark-oringe);
-    --font-color:#ca9d32;
-    --dark-font-color:#8e670b;
-    --card-bgcolor:var(--dark-bgcolor);
-    --card-border-color:var(--dark-font-color);
-    --nav-hover-bgcolor:var(--oringe);
-    --nav-hover-color:white;
-    --svg-fill-color:var(--light-grey);
+    --strong-color: var(--dark-oringe);
+    --font-color: #ca9d32;
+    --dark-font-color: #8e670b;
+    --card-bgcolor: var(--dark-bgcolor);
+    --card-border-color: var(--dark-font-color);
+    --nav-hover-bgcolor: var(--oringe);
+    --nav-hover-color: white;
+    --svg-fill-color: var(--light-grey);
 
     --li-marker-color: var(--dark-oringe);
     --anchor-color: grey;
-    --anchor-color-hover:white;
-    --anchor-bgcolor-hover:rgb(199, 157, 255);
-    --code-bgcolor:var(--dark-bgcolor);
-    --code-border-color:var(--dark-font-color);
-    --scrollbar-thumb-bgcolor:var(--code-border-color);
-    --scrollbar-track-bgcolor:var(--dark-font-color);
-    --blockquote-border-color:var(--oringe);
-    --blockquote-bgcolor:var(--dark-bgcolor);
-    --blockquote-color:var(--font-color);
+    --anchor-color-hover: white;
+    --anchor-bgcolor-hover: rgb(199, 157, 255);
+    --code-bgcolor: var(--dark-bgcolor);
+    --code-border-color: var(--dark-font-color);
+    --scrollbar-thumb-bgcolor: var(--code-border-color);
+    --scrollbar-track-bgcolor: var(--dark-font-color);
+    --blockquote-border-color: var(--oringe);
+    --blockquote-bgcolor: var(--dark-bgcolor);
+    --blockquote-color: var(--font-color);
 }

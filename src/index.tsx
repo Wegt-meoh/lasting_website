@@ -8,7 +8,7 @@ import { Suspense, useEffect, useState } from 'react';
 import SiderBar from './components/SiderBar';
 import Footer from './components/Footer';
 import './index.css'
-import { useAppSelector } from './hooks/hook';
+import { useAppSelector } from './store/hooks/hook';
 
 export default function App() {
   const routes = useRoutes(getAllRoutes())

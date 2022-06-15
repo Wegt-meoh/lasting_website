@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '../../../hooks/hook'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks/hook'
 import MarkdownSlice from '../../../components/MarkdownSlice'
 
 import './index.css'

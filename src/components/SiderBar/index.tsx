@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { changeThemeAction } from '../../features/theme/thmemActions'
-import { useAppDispatch } from '../../hooks/hook'
+import { changeThemeAction } from '../../store/features/theme/thmemActions'
+import { useAppDispatch } from '../../store/hooks/hook'
 import './index.css'
 
 export default function SiderBar() {
