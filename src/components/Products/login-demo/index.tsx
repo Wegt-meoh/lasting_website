@@ -7,7 +7,7 @@ import './index.css'
 
 //拟态效果的登陆界面
 
-export default function Login() {
+export default function LoginDemo() {
 
     const navigate = useNavigate()
 
