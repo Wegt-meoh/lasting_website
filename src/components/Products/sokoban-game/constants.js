@@ -32,7 +32,7 @@ export const size = {
 export const multiplier = 75
 
 export const colors = {
-  empty: { fill: '#ded7b3', stroke: '#ded7b3' },
+  empty: { fill: '#ded7b3', stroke: '#ded7b3' },//stroke alse means outline
   wall: { fill: '#868687', stroke: '#505051' },
   block: { fill: '#d9ae0a', stroke: '#C79300' },
   success_block: { fill: '#4ccd5a', stroke: '#3ca448' },
