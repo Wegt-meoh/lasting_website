@@ -8,47 +8,45 @@ body {
   font-family: 'Muli', sans-serif;
 }
 
-.ExpandingCards{  
-  padding: 20px 0;
-  width: 100%;
+.ExpandingCards {
   display: flex;
   flex-flow: row nowrap;
   gap: 1rem;
+  padding: 20px 0;
+  width: 100%;
 }
 
-.ExpandingCards>.panel{
+.ExpandingCards>.panel {
   position: relative;
-
-  height: 400px;
   flex: 1;
-  overflow: hidden;
+  height: 400px;  
+  color: white;
   border-radius: 40px;
   cursor: pointer;
-
-  color: white;
+  overflow: hidden;
   transition: all 0.7s ease-in;
   -webkit-transition: all 0.7s ease-in;
 }
 
-.ExpandingCards>.panel>h3{
+.ExpandingCards>.panel>h3 {
   position: absolute;
   bottom: 10px;
   left: 20px;
-  width: max-content;  
+  width: max-content;
   opacity: 0;
   transition: opacity 0.5s ease-in 0.5s;
 }
 
-.ExpandingCards>.active{
+.ExpandingCards>.active {
   flex: 6;
 }
 
-.ExpandingCards>.active h3{
+.ExpandingCards>.active h3 {
   opacity: 1;
 }
 
 @media screen and (max-width:500px) {
-  .ExpandingCards{
+  .ExpandingCards {
     flex-flow: column nowrap;
     height: 400px;
   }

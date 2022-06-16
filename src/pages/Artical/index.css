@@ -1,40 +1,40 @@
-.Artical{
+.Artical {
     padding-top: 4rem;
     padding-bottom: 2rem;
 }
 
-.Artical>section{
-    padding-top: 2rem;
+.Artical>section {
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
+    padding-top: 2rem;
 }
 
-.ArticalItem{
-    width: 100%;
-    height: 2rem;
-    padding:0.8rem; 
-    border-radius: 4px;   
+.ArticalItem {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    height: 2rem;
+    padding: 0.8rem;
+    border-radius: 4px;
     text-decoration: none;
 }
 
-.ArticalItem:hover{
+.ArticalItem:hover {
     background-color: var(--dark-bgcolor);
 }
 
-.ArticalItem>h3{
-    color: var(--strong-color);
-    margin: 0;    
+.ArticalItem>h3 {
+    margin: 0;
+    color: var(--strong-color);    
     font-size: 1rem;
 }
 
-.ArticalItem>span{
+.ArticalItem>span {
     color: var(--dark-font-color);
     font-size: 0.6rem;
 }

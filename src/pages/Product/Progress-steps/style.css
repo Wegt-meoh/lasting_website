@@ -5,78 +5,79 @@
   --line-border-empty: #e0e0e0;
 }
 
-.ProgressSteps{
+.ProgressSteps {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
 }
 
-.progress-container{
+.progress-container {
   position: relative;
-  width: 300px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  width: 300px;
 }
 
-.progress-container:before,#progress{
+.progress-container:before,
+#progress {
   position: absolute;
   top: 50%;
-  transform: translate(0,-50%);
-  height: 3px;  
+  transform: translate(0, -50%);
+  height: 3px;
 }
 
-.progress-container:before{
+.progress-container:before {
   content: '';
   width: 100%;
   background-color: var(--line-border-empty);
   z-index: 1;
 }
 
-#progress{
-  width:0;
-  background-color: var(--line-border-fill);
+#progress {
   z-index: 2;
-  transition: width 0.5s ease;  
+  width: 0;
+  background-color: var(--line-border-fill);
+  transition: width 0.5s ease;
   -webkit-transition: width 0.5s ease;
 }
 
-.circle{
-  font-size: 24px;
+.circle {
   z-index: 10;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
   background-color: var(--bgcolor);
+  border-radius: 50%;
   border: 3px solid var(--line-border-empty);
-  transition: border-color 0.7s ease-in;  
+  transition: border-color 0.7s ease-in;
   -webkit-transition: border-color 0.7s ease-in;
 }
 
-.circle.active{
+.circle.active {
   border-color: var(--line-border-fill);
 }
 
-.progress-buttons>.btn{
+.progress-buttons>.btn {
   margin: 10px;
   width: 60px;
   height: 30px;
-  background-color: var(--dark-bgcolor);
-  outline: none;
   border: none;
+  background-color: var(--dark-bgcolor);
+  outline: none;  
 }
 
-.progress-buttons>.btn:active{
+.progress-buttons>.btn:active {
   transform: scale(98%);
 }
 
-.progress-buttons>.btn:disabled{
+.progress-buttons>.btn:disabled {
   background-color: var(--line-border-empty);
   cursor: not-allowed;
 }

@@ -1,38 +1,38 @@
-#hiddenSearch{
+#hiddenSearch {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
     height: 40vh;
-    background-image: linear-gradient(90deg,red,blue);
+    background-image: linear-gradient(90deg, red, blue);
 }
 
-#hiddenSearch input{
+#hiddenSearch input {
     padding: 10px;
 }
 
-#hiddenSearch button{
+#hiddenSearch button {
     cursor: pointer;
     transform: translateX(-40px);
 }
 
 #hiddenSearch input,
-#hiddenSearch button{
-    border: none;
+#hiddenSearch button {
     width: 40px;
     height: 40px;
+    border: none;    
     transition: width 0.5s ease;
 }
 
-#hiddenSearch>.search.show input{
+#hiddenSearch>.search.show input {
     width: 200px;
 }
 
-#hiddenSearch>.search.show button{
+#hiddenSearch>.search.show button {
     transform: translateX(0);
 }
 
 #hiddenSearch button:focus,
-#hiddenSearch input:focus{
+#hiddenSearch input:focus {
     outline: none;
 }

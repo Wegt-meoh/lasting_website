@@ -17,7 +17,7 @@
     --code-bgcolor: var(--dark-bgcolor);
     --code-border-color: var(--dark-font-color);
     --scrollbar-thumb-bgcolor: var(--code-border-color);
-    --scrollbar-track-bgcolor: var(--dark-font-color);
+    --scrollbar-track-bgcolor: var(--dark-bgcolor);
     --blockquote-border-color: var(--oringe);
     --blockquote-bgcolor: var(--dark-bgcolor);
     --blockquote-color: var(--font-color);

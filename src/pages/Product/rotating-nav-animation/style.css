@@ -1,29 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Lato', sans-serif;
-  /* background-color: #333;
-  color: #222;
-  overflow-x: hidden;
-  margin: 0; */
 }
 
-#RotatingNavAnimation{
+#RotatingNavAnimation {
   overflow-x: hidden;
 }
 
-#RotatingNavAnimation .container { 
-  position:relative;
-  background-color: var(--bgcolor);
+#RotatingNavAnimation .container {
+  position: relative;
   transform-origin: top left;
-  transition: transform 0.5s linear;
   width: 100%;
   min-height: 100%;
   padding: 50px;
+  background-color: var(--bgcolor);
+  transition: transform 0.5s linear;
 }
 
 #RotatingNavAnimation .container.show-nav {
@@ -37,11 +29,11 @@ body {
 }
 
 #RotatingNavAnimation .circle {
-  background-color: #ff7979;
+  position: relative;
   height: 200px;
   width: 200px;
+  background-color: #ff7979;
   border-radius: 50%;
-  position: relative;
   transition: transform 0.5s linear;
 }
 
@@ -50,15 +42,15 @@ body {
 }
 
 #RotatingNavAnimation .circle button {
-  cursor: pointer;
   position: absolute;
   top: 50%;
   left: 50%;
   height: 100px;
-  background: transparent;
-  border: 0;
   font-size: 26px;
   color: #fff;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
 #RotatingNavAnimation .circle button:focus {
@@ -75,28 +67,28 @@ body {
   transform-origin: top left;
 }
 
-#RotatingNavAnimation .container.show-nav + nav li {
+#RotatingNavAnimation .container.show-nav+nav li {
   transform: translateX(0);
   transition-delay: 0.3s;
 }
 
 #RotatingNavAnimation nav {
+  z-index: 100;
   position: absolute;
   bottom: 40px;
   left: 0;
-  z-index: 100;
 }
 
 #RotatingNavAnimation nav ul {
-  list-style-type: none;
   padding-left: 30px;
+  list-style-type: none;
 }
 
 #RotatingNavAnimation nav ul li {
-  text-transform: uppercase;
-  color: var(--font-color);
   margin: 40px 0;
   transform: translateX(-100%);
+  text-transform: uppercase;
+  color: var(--font-color);
   transition: transform 0.4s ease-in;
 }
 
@@ -105,34 +97,33 @@ body {
   margin-right: 10px;
 }
 
-#RotatingNavAnimation nav ul li + li {
-  margin-left: 15px;
+#RotatingNavAnimation nav ul li+li {
   transform: translateX(-150%);
+  margin-left: 15px;
 }
 
-#RotatingNavAnimation nav ul li + li + li {
+#RotatingNavAnimation nav ul li+li+li {
   margin-left: 30px;
   transform: translateX(-200%);
 }
 
-#RotatingNavAnimation nav a{
+#RotatingNavAnimation nav a {
   color: var(--font-color);
   text-decoration: none;
   transition: all 0.5s;
 }
 
 #RotatingNavAnimation nav a:hover {
-  /* color: var; */
   font-weight: bold;
-}
-
-#RotatingNavAnimation .content img {
-  max-width: 100%;
 }
 
 #RotatingNavAnimation .content {
   max-width: 1000px;
   margin: 50px auto;
+}
+
+#RotatingNavAnimation .content img {
+  max-width: 100%;
 }
 
 #RotatingNavAnimation .content h1 {

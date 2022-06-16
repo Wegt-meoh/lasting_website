@@ -7,9 +7,9 @@
 }
 
 .md hr {
-    border: none;
-    outline: none;
+    border: none;    
     border-bottom: 2px solid var(--dark-font-color);
+    outline: none;
 }
 
 .md p {
@@ -61,11 +61,10 @@
 .md blockquote {
     margin: 0.6rem auto;
     padding: 0.4rem 1rem;
-    border-left: 4px solid;
-
-    border-color: var(--blockquote-border-color);
-    background-color: var(--blockquote-bgcolor);
     color: var(--blockquote-color);
+    border-left: 4px solid;
+    border-color: var(--blockquote-border-color);    
+    background-color: var(--blockquote-bgcolor);    
 }
 
 .md ul,
@@ -75,14 +74,13 @@
 
 .md pre {
     padding: 1rem;
-    margin: 1rem;
-    overflow: scroll;
-    overflow-y: hidden;
+    margin: 1rem;   
     border-radius: 0.6rem 0.6rem 0 0;
     border: 2px solid var(--code-border-color);
     border-bottom: none;
-
     background-color: var(--code-bgcolor);
+    overflow: scroll;
+    overflow-y: hidden;
 }
 
 .md pre::-webkit-scrollbar {
@@ -99,11 +97,11 @@
 }
 
 .md .copy-button {
-    width: 1.6rem;
-    height: 1.6rem;
     position: absolute;
     top: 1rem;
     right: 1rem;
-    cursor: pointer;
+    width: 1.6rem;
+    height: 1.6rem;    
     background: url('/public/icons/copyButton.svg') no-repeat center/80%;
+    cursor: pointer;
 }

@@ -1,64 +1,73 @@
-.siderbar{
+#SiderBar {
     z-index: 100;
+    display: grid;
+    grid-template-rows: var(--siderbar-height);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: var(--siderbar-height);
     background-color: var(--dark-bgcolor);
-    display: grid;
-    grid-template-columns: minmax(0,0.8fr) minmax(0,2fr) minmax(0,0.8fr); 
-    grid-template-rows: var(--siderbar-height); 
+    border-bottom: 1px solid grey;
 }
 
-.innerbar{
-    grid-column: 2;
+@media screen and (max-width:700px) {
+    #SiderBar {
+        grid-template-columns: 1rem minmax(0, 2fr) 1rem;
+    }
+}
 
-    color:var(--dark-font-color);
-    font-size: 0.6rem;
-    
-    padding: 1rem 0;     
+@media screen and (min-width:700px) {
+    #SiderBar {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr) minmax(0, 0.8fr);
+    }
+}
+
+#SiderBar>.innerbar {
+    grid-column: 2;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 0;
+    color: var(--dark-font-color);
+    font-size: 0.6rem;
 }
 
-.innerbar>.brand{
+#SiderBar>.innerbar>.brand {
     font-size: 1rem;
 }
 
-.innerbar>nav{    
+#SiderBar>.innerbar>nav {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
 }
 
-.innerbar img,.innerbar svg{
+#SiderBar>.innerbar img,
+#SiderBar>.innerbar svg {
     width: 1.4rem;
     height: 1.4rem;
 }
 
-.innerbar a{
-    cursor: pointer;
-
-    color: inherit;
-    text-decoration: none;
-    
-    margin: 0 0.2rem;
-    border-radius: 0.2rem;
-
-    padding: 0.1rem 0.2rem;
+#SiderBar>.innerbar a {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 0.2rem;
+    padding: 0.1rem 0.2rem;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
 }
 
-.innerbar a:hover,.themeToggle:hover{
-    color:var(--nav-hover-color);
+#SiderBar>.innerbar a:hover,
+#SiderBar>.themeToggle:hover {
+    color: var(--nav-hover-color);
     background-color: var(--nav-hover-bgcolor);
 }
 
-.innerbar svg{
-    fill:var(--svg-fill-color);
+#SiderBar>.innerbar svg {
+    fill: var(--svg-fill-color);
 }

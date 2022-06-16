@@ -1,5 +1,3 @@
-.cssLayoutPractice {}
-
 .jiuGongGe {
     display: flex;
     flex-flow: column wrap;
@@ -14,17 +12,17 @@
 }
 
 .jiuGongGeItem {
+    flex: 1;
     background-color: rgb(229, 239, 144);
     border: 1px solid black;
-    flex: 1;
 }
 
 .jiuGongGeByGrid {
-    width: 300px;
-    height: 300px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    width: 300px;
+    height: 300px;
 }
 
 .jiuGongGeByGridItem {
@@ -32,17 +30,19 @@
     background-color: rgb(187, 233, 123);
 }
 
-.leftFixedRightAutofit{
+.leftFixedRightAutofit {
     overflow: hidden;
     height: 300px;
 }
-.leftFixedRightAutofit>.leftPart{
+
+.leftFixedRightAutofit>.leftPart {
+    float: left;
     width: 200px;
     height: 100%;
-    float: left;
     background-color: rgb(168, 205, 238);
 }
-.leftFixedRightAutofit>.rightPart{
+
+.leftFixedRightAutofit>.rightPart {
     width: auto;
     height: 100%;
     background-color: rgb(228, 244, 184);

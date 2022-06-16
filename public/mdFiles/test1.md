@@ -1,5 +1,0 @@
-## typesctipt
-
-## class
-
-## interface

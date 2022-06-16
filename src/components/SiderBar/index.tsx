@@ -8,7 +8,7 @@ export default function SiderBar() {
   const dispatch = useAppDispatch()
 
   return (
-    <div className='siderbar'>
+    <div className='siderbar' id='SiderBar'>
       <div className='innerbar'>
         <div className='brand'>
           <Link to='/'>

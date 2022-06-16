@@ -37,7 +37,7 @@
 
 ---
 
-### 下载reactJS的步骤
+### 下载reactJS的步骤(用于实验图片懒加载)
 
 1. 进入<a href='https://reactjs.org/'>react官网</a>按下图依次点击链接
    

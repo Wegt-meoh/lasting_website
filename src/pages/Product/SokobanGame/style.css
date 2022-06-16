@@ -4,13 +4,13 @@ html {
 
 #Sokoban {
   margin: 0;
-  font-family: sans-serif;
-  background: #222;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  font-family: sans-serif;
   line-height: 1.2;
+  background: #222;
 }
 
 #Sokoban h1,
@@ -31,11 +31,11 @@ html {
 #Sokoban button {
   margin: 0.5rem 0;
   display: block;
-  background: #4ccd5a;
-  border: 1px solid #4ccd5a;
   padding: 0.5rem 1rem;
   font-weight: 600;
   font-size: 1rem;
+  background: #4ccd5a;
+  border: 1px solid #4ccd5a;
 }
 
 #Sokoban button:hover {

@@ -16,8 +16,8 @@
     --anchor-bgcolor-hover: rgb(199, 157, 255);
     --code-bgcolor: var(--dark-bgcolor);
     --code-border-color: grey;
-    --scrollbar-thumb-color: var(--code-border-color);
-    --scrollbar-track-bgcolor: black;
+    --scrollbar-thumb-bgcolor: var(--code-border-color);
+    --scrollbar-track-bgcolor: var(--dark-bgcolor);
     --blockquote-border-color: skyblue;
     --blockquote-bgcolor: var(--light-grey);
     --blockquote-color: var(--font-color);

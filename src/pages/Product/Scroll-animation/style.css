@@ -1,17 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-* {
-  box-sizing: border-box;
-}
-
 #ScrollAnimation {
-  background-color: var(--bgcolor);
-  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bgcolor);
   overflow-x: hidden;
 }
 
@@ -20,17 +16,17 @@
 }
 
 #ScrollAnimation .box {
-  background-color: steelblue;
-  color: #fff;
+  transform: translateX(400%);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 10px;
   width: 400px;
   height: 200px;
-  margin: 10px;
+  color: #fff;
+  background-color: steelblue;
   border-radius: 10px;
   box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
-  transform: translateX(400%);
   transition: transform 0.4s ease;
 }
 

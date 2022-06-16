@@ -3,11 +3,11 @@
     --app-height: 600px;
     --blur-color-light: #dbd7df;
     --blur-color-dark: #b2aeb6;
+    position: relative;
     user-select: none;
     height: var(--app-height);
     box-sizing: border-box;
     background-color: var(--primary-color);
-    position: relative;
 }
 
 .App-login-board {
@@ -18,22 +18,22 @@
     --y-index: calc(-1*var(--x-index));
     --blur: 6px;
     --spread: 4px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
     width: 300px;
     height: 400px;
     box-sizing: border-box;
     border-radius: 16px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
     box-shadow: var(--y-index) var(--y-index) var(--blur) var(--spread) var(--blur-color-light), var(--x-index) var(--x-index) var(--blur) var(--spread) var(--blur-color-dark);
     transform: translate(-50%, -50%);
 }
 
 .App-login-title {
+    height: var(--title-height);
+    box-sizing: border-box;
     font-size: large;
     text-align: center;
-    box-sizing: border-box;
-    height: var(--title-height);
 }
 
 .App-login-title>div {
@@ -43,11 +43,11 @@
 }
 
 .App-login-content {
-    box-sizing: border-box;
-    height: calc(100% - var(--title-height));
     display: flex;
     flex-flow: column;
     align-items: center;
+    box-sizing: border-box;
+    height: calc(100% - var(--title-height));
 }
 
 .App-login-input>span {
@@ -60,18 +60,17 @@
     --y-index: calc(-1*var(--x-index));
     --blur: 4px;
     --spread: 2px;
-    box-sizing: border-box;
     display: block;
+    box-sizing: border-box;    
     width: var(--content-width);
     height: var(--content-height);
-    border: none;
-    background-color: var(--primary-color);
-    border-radius: 20px;
+    margin-bottom: 20px;
     padding: 0 20px 0 20px;
     font-size: 16px;
+    background-color: var(--primary-color);        
+    border-radius: 20px;
     border: 1px dashed var(--blur-color-dark);
-    outline: none;
-    margin-bottom: 20px;
+    outline: none;    
 }
 
 .App-login-input>input:focus {
@@ -84,9 +83,9 @@
     --y-index: calc(-1*var(--x-index));
     --blur: 4px;
     --spread: 2px;
-    background-color: var(--primary-color);
     width: var(--content-width);
     height: var(--content-height);
+    background-color: var(--primary-color);    
     border-radius: 20px;
     border: none;
     box-shadow: var(--y-index) var(--y-index) var(--blur) var(--spread) var(--blur-color-light), var(--x-index) var(--x-index) var(--blur) var(--spread) var(--blur-color-dark);
