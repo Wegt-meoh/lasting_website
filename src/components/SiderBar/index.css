@@ -30,7 +30,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
-    color: var(--dark-font-color);
+    color: var(--font-color);
     font-size: 0.6rem;
 }
 
@@ -44,13 +44,7 @@
     align-items: center;
 }
 
-#SiderBar>.innerbar img,
-#SiderBar>.innerbar svg {
-    width: 1.4rem;
-    height: 1.4rem;
-}
-
-#SiderBar>.innerbar a {
+#SiderBar nav>* {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,10 +56,15 @@
     cursor: pointer;
 }
 
-#SiderBar>.innerbar a:hover,
-#SiderBar>.themeToggle:hover {
+#SiderBar nav>*:hover {
     color: var(--nav-hover-color);
     background-color: var(--nav-hover-bgcolor);
+}
+
+#SiderBar>.innerbar img,
+#SiderBar>.innerbar svg {
+    width: 1.4rem;
+    height: 1.4rem;
 }
 
 #SiderBar>.innerbar svg {

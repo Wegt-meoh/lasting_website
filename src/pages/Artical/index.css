@@ -28,7 +28,7 @@
     background-color: var(--dark-bgcolor);
 }
 
-.ArticalItem>h3 {
+.ArticalItem>h1 {
     margin: 0;
     color: var(--strong-color);    
     font-size: 1rem;

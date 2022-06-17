@@ -30,7 +30,7 @@ function ArticalItem(props: ArticalItemProps) {
 
   return (
     <Link className='ArticalItem' to={path === undefined ? '' : path}>
-      <h3>{title}</h3>
+      <h1>{title}</h1>
       <span>{date}</span>
     </Link>
   )

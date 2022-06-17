@@ -10,11 +10,11 @@ export default function SiderBar() {
   return (
     <div className='siderbar' id='SiderBar'>
       <div className='innerbar'>
-        <div className='brand'>
+        <nav className='brand'>
           <Link to='/'>
             <span>Lasting</span>
           </Link>
-        </div>
+        </nav>
         <nav>
           <Link to='/artical'>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAHZUlEQVR4nO2ba2wU1xXHf2dmH7bZBUNsL46ANGCoo6YUSm1IC40iaqCq1CYFEUhDsBMoJTZUNaBKlRpSpcqHxNBKdvNSm3USVZWqSKWVWmJcRMojxDaVq1atoIBKSiVjG/Hy2vG+5vbDeNf27nq9j1kbGf8/zdz7v+ece+bcc8+M7sA9DsmV4IbnvRUifB/hMaAY6EVxQsT4eX3Tc+dypTdd6FYLVChx1z74kmi8i7AUcA/pcZv3snN95eP6sfbfn7Badyaw3AGzah98AVEHRRMp/fxCFq5+mHmVD1FUdj+artPfe1uAR9dXPhE61n7klNX604WlS+DVvb98WDNsnYiyLV77RQrnl8Rxbv23h4vHOwEVVKKW7W989l9W2pAuNEuFGfpeULaS8gcSTh6gcEEJJeXzAexiyF4r9WcCSx0ArAMoKZ+XlFT82fmRy/UW608btrE6Gure+bqIsQvFKqCEFJeLiEbeLFdSTv5sFyIaCuMzh+q8KgWxCugBzorBm/Wv1XyQii2pIG5SL1Z789wueRvU1kwEFs4rZnHVinF5/279K7f/15uJClD8uq+fHS821wxmJmAYcRHgdvErUFsdTkXlykHKlgRxuYyoq5p+VghARc2GrBQvSeKkDq/5gOt+cMtsUODzaVy8YKe9LY9gQL7jdokCtmVlBDE54PDz3g3AUw6nYuNmH8tW+HG5jRyWSylCwOU2WP4lPxs3+7A7FKCePryneV22okdFgNLYBVC50s99RWFu3NA43lJAT48NZWSrKn1Eok008HjCrK0aoKg4TOWqQc6czAeldgHHstERuwS+DFC2JADA8ZYCuq+NmSdNAbpgd+houpZRoCjACCsCwTDhUGIvKwOudekcb81n0xYfZYuDnDmZjxqyNxvEzq4IYIbLNKSnx+zefXANNpu5Whp//Jco2enUsduzKyYF0HUhX7cRCBgEAqFo356XHgUgFDJ4/Sen6O427XG5o45KWGw01L29XpB9iCwHQKlOEWmob6yOi5bYOkADkKFHGQn7yOQBHA5zwobfn/XkY+FwaIQDZvQ5nMOyI/oj9shwqMXVMYfqml8V5AOgCqWKUKoIqFJKtTTUel+J5addCM1bNBuAT9rPE/QH0h2eFEF/gKtnzwMwf0hPOmio9W4Dtd8mqFXOEFtmBNgyI8BKZxiboEQ4YHKGkXyBJ8DqDYu4evkm1y91cfpSV9pGpgKHQ2f1+oVpjxPhRwCPOEOyyDacTx6yh3Gg5JTfFuG8F+lLOwJmzcljy+4VLCibPWppWAGbTWNB2Wye3L2CmXPyMxFRDrDQFp9MF9qNUZyozky0FBbl863tSzMZOiFItBuNtUNl5IC7EYdqvWci180+R3Junff0vqaa1WD92+DkQdKqCb4SuZgyERDBY3u+mbT/ROMfRt1PnQjIENMOmGwDJhsZ5YD33+qk6+qdpJzSBTPZtHN50jGxHCsQu8bHQ0YRINr4730iozmJxsRysoLI6TTY0c/xGUXAxh3LJmRMOtjXWL0m8n1xcHvir3l57/zG5DbVfDXSds/ngHveAZYmwclKfNnA0iQ44YnPAuQ0CeY68VmBKZ0DHH9qxXG0NSlnyr0MjYTWe31cTs4qwQju9sSYs0owyr3LE+OEVYJWjE0Xhqd4XM6UzgGBDV8blzOld4FUMO2AyTYgl5iuA1KoA6Z0BKSCaQdMtgGTjWkHTLYBOYEy0C9fid7ql6+ASnwccUruAo4jR9HuDL9w2U+fxfa3vyfkTkkHaHfuUDgHKtaYT73jlHDrRn9CbtoOeP+tThDiXnFz3ZYShA4UFZ5S2FxjIEPHjMo/p/itV6O7a4gzAmk7INF3gIloSwWG0p8Uwh3dXdx37qxQsdqMgHNnxZw83JRw+KmRY9JyQNg/EL3u774S1291W9g/gO4sSNm+A03P/Keh1rsV4ejHH4pe5AFdh48/FADDENl24LUdl0aOSdkBAd9Ngv238dyfh3m8cRi5ahu81YNjxizsrtRPjO3/RU3robrmg0qpn7b8zvzQYm4A8sKBxuo/xvJTckDYP0Cw/zYA3/i2J64/l22B/tuIPS8VM6Oob9r+8qE93qUBv2weajpS37T95X1Ux3FTqgOCA5mtSasQSlO/ICqcr3YItAm0hQqMZwRJWAjERoABaEqZpzFFM09nBj8dRLP896rUYQTN3wJk6HGNqGnGPML9w1ee6wNWjSc71gG9gKffp+FyG3g8Ya516TS//knaRluJuQtmAuDxmOeIfX3RwO3JVnbMElAfAVy8YAdgbdUAc0tDUc9PFiR0g7mlIdZWfQoM2wecGXNQihgVASLaG0qpJ9rb8pj/QIii4jCbtviy1WEprvfqdLSZSVET9Ua28kat7Jb2I5c3rHx8UTgsX7hw3oGug9utcDjU5P41oqCvT+Of/3Dy55YCgkEB1Lv1Tc8ezlZ03DZoo29nkJkSDPD0mZP55p8ZdxlEeM+G77uWyBqr4/Ce5nVKGd8DeQTwJONOABTQLfARIm8m+vFhGhni/2X7d+LyLSckAAAAAElFTkSuQmCC"/>
@@ -26,7 +26,7 @@ export default function SiderBar() {
           </Link>
         </nav>
         <nav>
-          <a target='_blank' rel='noreferer' href='https://github.com/Wegt-meoh'>
+          <a target='_blank' rel='noreferrer' href='https://github.com/Wegt-meoh'>
             <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true">
               <path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
             </svg>
