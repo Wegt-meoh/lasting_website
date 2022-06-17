@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { message } from 'antd'
 import { useNavigate } from 'react-router-dom'
 
 import './index.css'
@@ -21,7 +20,7 @@ export default function LoginDemo() {
         } else {
             setActicityState('login')
         }
-        message.success("activity state change", 1)
+        alert("activity state change")
     }
 
     function handleClick() {

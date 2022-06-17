@@ -1,4 +1,3 @@
-import { Button } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
 import './index.css'
 
@@ -64,8 +63,8 @@ export default function UseUserMedia() {
                     width={400}
                     height={400}
                     ref={videoRef} />
-                <Button onClick={() => { setIsMirror(!isMirror) }}>{isMirror ? '镜像' : '正常'}</Button>
-                <Button onClick={saveImg}>截图</Button>
+                <button onClick={() => { setIsMirror(!isMirror) }}>{isMirror ? '镜像' : '正常'}</button>
+                <button onClick={saveImg}>截图</button>
             </div>
             <canvas
                 className='useUserMidia-canvas'
