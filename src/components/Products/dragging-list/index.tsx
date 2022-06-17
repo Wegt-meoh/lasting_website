@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 
 import './index.css'
 
@@ -34,7 +34,7 @@ export default function DraggingList() {
     }
 
     function handleMouseMove(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-        const { dragItemIndex, offsetPageY, startPageY } = dragState
+        const { dragItemIndex } = dragState
         const length = liData.length
         const movedPageY = e.pageY - dragState.startPageY
         if (movedPageY >= liHeight && dragItemIndex < length - 1) {
@@ -54,7 +54,7 @@ export default function DraggingList() {
             })
         } else {
             if ((dragItemIndex === length - 1 && movedPageY > 0) || (dragItemIndex === 0 && movedPageY < 0)) {
-                return                 
+                return
             } else {
                 setDragState({ ...dragState, offsetPageY: movedPageY })
             }

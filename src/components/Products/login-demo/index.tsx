@@ -1,15 +1,10 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import './index.css'
-
 
 //拟态效果的登陆界面
 
 export default function LoginDemo() {
-
-    const navigate = useNavigate()
-
     const [ActicityState, setActicityState] = useState('login')
     let [userName, SetUserName] = useState('')
     let [password, SetPassword] = useState('')

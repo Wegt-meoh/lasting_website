@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './index.css'
 
 interface CardProps {
@@ -11,7 +11,7 @@ export default function Card(props: CardProps) {
     const {
         children,
         style,
-        hoverable = true
+        // hoverable = true
     } = props    
 
     return (

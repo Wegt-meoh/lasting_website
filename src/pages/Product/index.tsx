@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Link, useRoutes } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import Card from '../../components/Card'
 import Header from '../../components/Header'
 import { getProduct } from '../../route/routes'

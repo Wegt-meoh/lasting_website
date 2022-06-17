@@ -8,11 +8,11 @@ export default function Footer() {
       <div className='info'>
         <div>
           <div className='flex-two'>
-            <a target="_blank" href="https://icons8.com">icons8</a>
+            <a target="_blank" ref='noreferrer' href="https://icons8.com">icons8</a>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"><path fill="#3ddab4" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5 V37z" /><path fill="#fff" d="M11,10h13v28H11V10z" /><path fill="#fff" d="M31,10c-3.866,0-7,3.134-7,7s3.134,7,7,7s7-3.134,7-7S34.866,10,31,10z M31,24c-3.866,0-7,3.134-7,7 s3.134,7,7,7s7-3.134,7-7S34.866,24,31,24z" /></svg>
           </div>
           <div className='flex-two'>
-            <a target='_blank' rel='noreferer' href='https://github.com/Wegt-meoh'>
+            <a target='_blank' rel='noreferrer' href='https://github.com/Wegt-meoh'>
               github
             </a>
             <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true">
@@ -23,7 +23,7 @@ export default function Footer() {
         
         <div className='flex-two'>
           <svg viewBox="64 64 896 896" focusable="false" data-icon="copyright" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372zm5.6-532.7c53 0 89 33.8 93 83.4.3 4.2 3.8 7.4 8 7.4h56.7c2.6 0 4.7-2.1 4.7-4.7 0-86.7-68.4-147.4-162.7-147.4C407.4 290 344 364.2 344 486.8v52.3C344 660.8 407.4 734 517.3 734c94 0 162.7-58.8 162.7-141.4 0-2.6-2.1-4.7-4.7-4.7h-56.8c-4.2 0-7.6 3.2-8 7.3-4.2 46.1-40.1 77.8-93 77.8-65.3 0-102.1-47.9-102.1-133.6v-52.6c.1-87 37-135.5 102.2-135.5z"></path></svg>
-          <a target='_blank' rel='noreferer' href="http://beian.miit.gov.cn/">浙ICP备2022003490号</a>
+          <a target='_blank' rel='noreferrer' href="http://beian.miit.gov.cn/">浙ICP备2022003490号</a>
         </div>
       </div>
     </footer>
