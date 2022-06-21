@@ -103,3 +103,35 @@
     background: url('/public/icons/copyButton.svg') no-repeat center/80%;
     cursor: pointer;
 }
+
+.md table{
+    border-collapse: collapse;
+}
+
+.md thead>tr{    
+    border-bottom: 1px solid var(--dark-font-color);
+}
+
+.md tbody>tr{    
+    border-bottom: 1px solid var(--font-color);
+}
+
+.md tbody>tr:last-of-type{    
+    border: none;
+}
+
+.md thead>tr{
+    background-color: var(--dark-bgcolor);
+}
+
+.md tbody>tr:nth-of-type(even){
+    background-color: var(--dark-bgcolor);
+}
+
+.md tbody>tr:nth-of-type(odd){
+    background-color: var(--bgcolor);
+}
+
+.md th,.md td{
+    padding: 0.4rem;
+}
