@@ -42,8 +42,9 @@ const routes: customRouteObject[] = [
     { path: '/jsManipulateCss', element: <MarkdownSlice src="/mdFiles/jsNote/jsManipulateCss.md" alt="loading..." languageSubset={['js']} />, title: 'js操作css', desc: '', classify: 'artical', date: '2022 06 16' },
     { path: '/httpAndHttps', element: <MarkdownSlice src="/mdFiles/otherNote/httpAndHttps.md" alt="loading..." languageSubset={[]} />, title: 'Http&Https', desc: '', classify: 'artical', date: '2022 06 19' },
     { path: '/jsbagu', element: <MarkdownSlice src="/mdFiles/jsNote/jsbagu.md" alt="loading..." languageSubset={[]} />, title: 'js八股文', desc: '', classify: 'artical', date: '2022 06 21' },
-    { path: '/test', element: <Test/>, title: 'Test', desc: '', classify: 'product', date: '2022 06 21' },
+    { path: '/test', element: <Test />, title: 'Test', desc: '', classify: 'product', date: '2022 06 21' },
     { path: '/dockercmd', element: <MarkdownSlice src="/mdFiles/otherNote/dockerCmd.md" alt="loading..." languageSubset={[]} />, title: 'docker常用命令', desc: '', classify: 'artical', date: '2022 06 21' },
+    { path: '/whatiswebpack', element: <MarkdownSlice src="/mdFiles/otherNote/learningWebpack.md" alt="loading..." languageSubset={[]} />, title: '什么是webpack', desc: '', classify: 'artical', date: '2022 06 23' },
 ]
 
 function getProduct() {
