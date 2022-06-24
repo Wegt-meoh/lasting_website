@@ -22,8 +22,8 @@ import {
 } from './utils.js'
 
 class Sokoban {
-  constructor({ level }) {
-    this.canvas = document.querySelector('canvas')
+  constructor({ level }, canvas) {
+    this.canvas = canvas
     this.canvas.width = size.width
     this.canvas.height = size.height
 
@@ -134,7 +134,7 @@ class Sokoban {
       // See what the next block is
       const nextBlock =
         this.board[getY(newPlayerY, direction, blocksInARow)][
-          getX(newPlayerX, direction, blocksInARow)
+        getX(newPlayerX, direction, blocksInARow)
         ]
       // Push all the blocks if you can
       if (isTraversible(nextBlock)) {

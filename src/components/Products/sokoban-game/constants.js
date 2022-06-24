@@ -22,6 +22,8 @@ export const keys = {
   a: 'a',
   s: 's',
   d: 'd',
+  fullScreen:'f',
+  esc:'Escape',
 }
 
 export const size = {
