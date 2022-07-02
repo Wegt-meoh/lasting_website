@@ -1,5 +1,6 @@
 .newMoon {
     --bgcolor: #ebdbb2;
+    --light-bgcolor: #ede4cc;
     --dark-bgcolor: #e1bc65;
     --strong-color: var(--dark-oringe);
     --font-color: #513b09;

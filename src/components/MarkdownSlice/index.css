@@ -128,10 +128,6 @@
     background-color: var(--dark-bgcolor);
 }
 
-.md tbody>tr:nth-of-type(odd){
-    background-color: var(--bgcolor);
-}
-
 .md th,.md td{
     padding: 0.4rem;
 }
