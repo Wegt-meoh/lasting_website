@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Card from '../../components/Card'
+import DoubleCard from '../../components/DoubleCard'
 import Header from '../../components/Header'
 import { getProduct } from '../../route/routes'
 import './index.css'
@@ -14,14 +15,13 @@ export default function Product() {
       <section>
         {routes.map(r => {
           return (
-            <Card key={r.path}>
-              <h3>{r.title}</h3>
+            <DoubleCard key={r.path} title={r.title} description={r.desc}>
               <div>
-                <Link to={r.path === undefined ? '' : r.path}>
+                <Link to={r.path === undefined ? '/' : r.path}>
                   <span>demo</span>
                 </Link>
               </div>
-            </Card>)
+            </DoubleCard>)
         })}
       </section>
     </div>
