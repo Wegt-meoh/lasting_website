@@ -1,0 +1,83 @@
+#pushBoxGame {
+    --fontSize: 0.8rem;
+    display: grid;
+    grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+    background-color: black;
+    overflow: auto;
+    user-select: none;
+}
+
+#pushBoxGame .gameUI {
+    grid-column: 1;
+    padding: 20px;
+}
+
+#pushBoxGame .gameScene {
+    grid-column: 2;
+    padding: 20px;
+}
+
+#pushBoxGame .tipContainer {
+    padding: 10px;
+    border: 1px solid white;   
+}
+
+#pushBoxGame .tipContainer>div {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    font-size: var(--fontSize);
+    margin-bottom: 0.6rem;
+    color: white;
+}
+
+#pushBoxGame .tipContainer>div>img {
+    height: 0.8rem;
+}
+
+#pushBoxGame .tipContainer>div:nth-of-type(2)>img {
+    transform: rotateZ(90deg);
+}
+
+#pushBoxGame .tipContainer>div:nth-of-type(3)>img {
+    transform: rotateZ(180deg);
+}
+
+#pushBoxGame .tipContainer>div:nth-of-type(4)>img {
+    transform: rotateZ(-90deg);
+}
+
+#pushBoxGame .levelSelection {
+    margin-top: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: var(--fontSize);
+}
+
+#pushBoxGame .levelSelection>* {
+    width: 1.2rem;
+    height: 1rem;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    text-align: center;
+    color: white;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+#pushBoxGame .levelSelection>*:hover {
+    background-color: white;
+    color: black; 
+}
+
+#pushBoxGame .levelSelection>.checked{
+    background-color: white;
+    color: black;
+}
+#pushBoxGame .levelSelection>.finished{
+    background-color: green;
+    color: white;
+}
