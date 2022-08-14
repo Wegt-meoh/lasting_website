@@ -48,27 +48,47 @@
     background-color: rgb(228, 244, 184);
 }
 
-.sanlie{
+.sanlie {
     display: grid;
     grid-template-rows: 1;
-    grid-template-columns: minmax(0,1fr) 200px minmax(0,1fr);
+    grid-template-columns: minmax(0, 1fr) 200px minmax(0, 1fr);
 }
 
-.sanlie>*{
+.sanlie>* {
     height: 400px;
 }
 
-.sanlie>.left{
+.sanlie>.left {
     grid-column: 1;
     background-color: red;
 }
 
-.sanlie>.mid{
+.sanlie>.mid {
     grid-column: 2;
     background-color: yellow;
 }
 
-.sanlie>.right{
+.sanlie>.right {
     grid-column: 3;
     background-color: green;
+}
+
+.posAbsolute {
+    position: absolute;
+    box-sizing: content-box;
+    width: 300px;
+    height: 300px;
+    padding: 40px;
+    background-color: yellow;
+    border: 1px solid black;
+}
+
+.posAbsoluteChild {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    border: 1px solid black;
 }

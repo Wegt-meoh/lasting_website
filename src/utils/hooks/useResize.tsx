@@ -1,10 +1,10 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-export default function useResize(func: (...args: any[]) => any): void {
+export default function useResize (func: (...args: any[]) => any): void {
     return useEffect(() => {
-        window.addEventListener('resize', func)
+        window.addEventListener("resize", func);
         return () => {
-            window.removeEventListener('resize', func)
-        }
-    }, [])
+            window.removeEventListener("resize", func);
+        };
+    }, []);
 }

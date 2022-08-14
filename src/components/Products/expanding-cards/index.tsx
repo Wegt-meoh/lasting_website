@@ -1,31 +1,30 @@
-import React, { useEffect } from 'react'
-import Header from '../../Header'
+import React, { useEffect } from "react";
+import Header from "../../Header";
 
-import './style.css'
+import "./style.css";
 
-export default function ExpandingCards() {
-
+export default function ExpandingCards () {
     useEffect(() => {
-        const panels = document.querySelectorAll('.panel')
+        const panels = document.querySelectorAll(".panel");
 
         panels.forEach(panel => {
-            panel.addEventListener('click', () => {
-                removeActiveClasses()
-                panel.classList.add('active')
-            })
-        })
+            panel.addEventListener("click", () => {
+                removeActiveClasses();
+                panel.classList.add("active");
+            });
+        });
 
-        function removeActiveClasses() {
+        function removeActiveClasses () {
             panels.forEach(panel => {
-                panel.classList.remove('active')
-            })
+                panel.classList.remove("active");
+            });
         }
-    }, [])
+    }, []);
 
     return (
         <>
             <Header h1={<a href='https://github.com/bradtraversy/50projects50days' target='_blank' rel='noreferrer'>origin</a>}
-                p={''} />
+                p={""} />
             <div className="ExpandingCards">
                 <div className="panel active" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')" }}>
                     <h3>Explore The World</h3>
@@ -44,5 +43,5 @@ export default function ExpandingCards() {
                 </div>
             </div>
         </>
-    )
+    );
 }

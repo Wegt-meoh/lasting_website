@@ -1,18 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
-import './style.css'
+import "./style.css";
 
-export default function RotatingNavAnimation() {
-
+export default function RotatingNavAnimation () {
     useEffect(() => {
-        const open = document.getElementById('open') as HTMLElement
-        const close = document.getElementById('close') as HTMLElement
-        const container = document.querySelector('.container') as HTMLElement
+        const open = document.getElementById("open") as HTMLElement;
+        const close = document.getElementById("close") as HTMLElement;
+        const container = document.querySelector(".container") as HTMLElement;
 
-        open.addEventListener('click', () => container.classList.add('show-nav'))
+        open.addEventListener("click", () => container.classList.add("show-nav"));
 
-        close.addEventListener('click', () => container.classList.remove('show-nav'))
-    }, [])
+        close.addEventListener("click", () => container.classList.remove("show-nav"));
+    }, []);
 
     return (
         <div id='RotatingNavAnimation'>
@@ -48,5 +47,5 @@ export default function RotatingNavAnimation() {
                 </ul>
             </nav>
         </div>
-    )
+    );
 }

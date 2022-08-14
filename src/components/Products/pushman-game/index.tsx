@@ -1,51 +1,51 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from "react";
 
-import './index.css'
-import FullScreen from '../../FullScreen'
-import PushBox from './gameMaster'
-import { getGraphLength } from './mapData'
+import "./index.css";
+import FullScreen from "../../FullScreen";
+import PushBox from "./gameMaster";
+import { getGraphLength } from "./mapData";
 
-export default function PushBoxGame() {
-    const canvas = useRef<HTMLCanvasElement>(null)
-    let pushBox = useRef<PushBox>()
-    const [level,setLevel]=useState(0)
+export default function PushBoxGame () {
+    const canvas = useRef<HTMLCanvasElement>(null);
+    const pushBox = useRef<PushBox>();
+    const [level, setLevel] = useState(0);
 
     useEffect(() => {
         if (canvas.current !== null) {
-            pushBox.current = new PushBox(0, canvas.current)
+            pushBox.current = new PushBox(0, canvas.current);
         } else {
-            console.log('can not get canvas')
+            console.log("can not get canvas");
         }
 
         const listener = (event: KeyboardEvent) => {
             switch (event.key) {
-                case 'w':
-                case 'ArrowUp':
-                    pushBox.current?.playerMove('up')
-                    break
-                case 'a':
-                case 'ArrowLeft':
-                    pushBox.current?.playerMove('left')
-                    break
-                case 's':
-                case 'ArrowDown':
-                    pushBox.current?.playerMove('down')
-                    break
-                case 'd':
-                case 'ArrowRight':
-                    pushBox.current?.playerMove('right')
-                    break
-                case 'z':
-                    pushBox.current?.back()
+                case "w":
+                case "ArrowUp":
+                    pushBox.current?.playerMove("up");
+                    break;
+                case "a":
+                case "ArrowLeft":
+                    pushBox.current?.playerMove("left");
+                    break;
+                case "s":
+                case "ArrowDown":
+                    pushBox.current?.playerMove("down");
+                    break;
+                case "d":
+                case "ArrowRight":
+                    pushBox.current?.playerMove("right");
+                    break;
+                case "z":
+                    pushBox.current?.back();
             }
-        }
+        };
 
-        document.addEventListener('keydown', listener)
+        document.addEventListener("keydown", listener);
 
         return () => {
-            document.removeEventListener('keydown', listener)
-        }
-    }, [pushBox, canvas])
+            document.removeEventListener("keydown", listener);
+        };
+    }, [pushBox, canvas]);
 
     return (
         <FullScreen>
@@ -62,25 +62,25 @@ export default function PushBoxGame() {
                     <div className="levelSelection">
                         {
                             (() => {
-                                let t: any = []
+                                const t: any = [];
                                 for (let i = 0; i < getGraphLength(); i++) {
-                                    let className=''
-                                    if(level===i) className='checked'
-                                    if(pushBox.current?.finishedLevel[i]===true) className='finished'
+                                    let className = "";
+                                    if (level === i) className = "checked";
+                                    if (pushBox.current?.finishedLevel[i] === true) className = "finished";
                                     t.push(
                                         <div
                                             onClick={() => {
-                                                if (pushBox.current?.level === i) return
+                                                if (pushBox.current?.level === i) return;
                                                 if (window.confirm(`are you sure go to level ${i},any change that you done will be losed.`)) {
-                                                    pushBox.current?.loadLevel(i)
-                                                    setLevel(i)
+                                                    pushBox.current?.loadLevel(i);
+                                                    setLevel(i);
                                                 }
                                             }}
-                                            className={className}                                            
+                                            className={className}
                                             key={i}>{i}</div>
-                                    )
+                                    );
                                 }
-                                return t
+                                return t;
                             })()
                         }
                     </div>
@@ -90,5 +90,5 @@ export default function PushBoxGame() {
                 </div>
             </div>
         </FullScreen>
-    )
+    );
 }

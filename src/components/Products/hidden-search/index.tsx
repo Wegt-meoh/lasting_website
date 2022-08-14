@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
-import './style.css'
+import "./style.css";
 
-export default function HiddenSearch() {
-
+export default function HiddenSearch () {
     useEffect(() => {
-        const search = document.querySelector('.search') as HTMLDivElement
-        const btn = document.querySelector('.btn') as HTMLButtonElement
-        const input = document.querySelector('.input') as HTMLInputElement
+        const search = document.querySelector(".search") as HTMLDivElement;
+        const btn = document.querySelector(".btn") as HTMLButtonElement;
+        const input = document.querySelector(".input") as HTMLInputElement;
 
-        btn.addEventListener('click', () => {
-            search.classList.toggle('show')
-            input.focus()
-        })
-    }, [])
+        btn.addEventListener("click", () => {
+            search.classList.toggle("show");
+            input.focus();
+        });
+    }, []);
 
     return (
         <div id='hiddenSearch'>
@@ -25,5 +24,5 @@ export default function HiddenSearch() {
                 </button>
             </div>
         </div>
-    )
+    );
 }

@@ -1,6 +1,6 @@
-const header = 'counter'
+const header = "counter";
 
-const IncrementAction = () => ({ type: `${header}/increment` })
-const DecrementAction = () => ({ type: `${header}/decrement` })
+const IncrementAction = () => ({ type: `${header}/increment` });
+const DecrementAction = () => ({ type: `${header}/decrement` });
 
-export { IncrementAction, DecrementAction }
+export { IncrementAction, DecrementAction };

@@ -1,0 +1,7 @@
+/node_modules
+/build
+.eslintrc.js
+*.min.*
+*.css
+*.html
+*.json

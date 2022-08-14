@@ -1,10 +1,10 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-export default function useScroll(func: (...args: any[]) => any): void {  
+export default function useScroll (func: (...args: any[]) => any): void {
     return useEffect(() => {
-        window.addEventListener('scroll', func)
+        window.addEventListener("scroll", func);
         return () => {
-            window.removeEventListener('scroll', func)
-        }
-    }, [])
+            window.removeEventListener("scroll", func);
+        };
+    }, []);
 }

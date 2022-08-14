@@ -1,51 +1,54 @@
-import { useRoutes, BrowserRouter } from 'react-router-dom';
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { Suspense, useEffect, useState } from 'react';
-import { getAllRoutes } from './route/routes';
-import { store } from './store/store';
-import SiderBar from './components/SiderBar';
-import Footer from './components/Footer';
-import './index.css';
-import { useAppSelector } from './store/hooks/hook';
+import { useState, useEffect, Suspense } from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { useRoutes, BrowserRouter } from "react-router-dom";
+import APlayerComponent from "./components/APlayerComponent";
+import Footer from "./components/Footer";
+import SiderBar from "./components/SiderBar";
 
-export default function App() {
-  const routes = useRoutes(getAllRoutes());
-  const theme = useAppSelector((state) => state.theme.value);
-  const [appClassName, setAppClassName] = useState('App');
+import "./index.css";
+import { getAllRoutes } from "./route/routes";
+import { useAppSelector } from "./store/hooks/hook";
+import { store } from "./store/store";
 
-  useEffect(() => {
-    setAppClassName(`App ${theme}`);
-    if (theme === 'dark') {
-      document.body.style.backgroundColor = 'rgb(40, 44, 52)';
-    } else if (theme === 'light') {
-      document.body.style.backgroundColor = 'white';
-    } else {
-      document.body.style.backgroundColor = '#ebdbb2';
-    }
-  }, [theme]);
+export default function App () {
+    const routes = useRoutes(getAllRoutes());
+    const theme = useAppSelector((state) => state.theme.value);
+    const [appClassName, setAppClassName] = useState("App");
 
-  return (
-    <div className={appClassName}>
-      <SiderBar />
-      <main>
-        <Suspense fallback={<h1>loading...</h1>}>
-          {routes}
-        </Suspense>
-      </main>
-      <Footer />
-    </div>
-  );
+    useEffect(() => {
+        setAppClassName(`App ${theme}`);
+        if (theme === "dark") {
+            document.body.style.backgroundColor = "rgb(40, 44, 52)";
+        } else if (theme === "light") {
+            document.body.style.backgroundColor = "white";
+        } else {
+            document.body.style.backgroundColor = "#ebdbb2";
+        }
+    }, [theme]);
+
+    return (
+        <div className={appClassName}>
+            <SiderBar />
+            <main>
+                <Suspense fallback={<h1>loading...</h1>}>
+                    {routes}
+                </Suspense>
+            </main>
+            <Footer />
+            <APlayerComponent />
+        </div>
+    );
 }
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement,
+    document.getElementById("root") as HTMLElement
 );
 
 root.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>,
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </BrowserRouter>
 );

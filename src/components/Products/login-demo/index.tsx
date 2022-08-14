@@ -1,32 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-import './index.css'
+import "./index.css";
 
-//拟态效果的登陆界面
+// 拟态效果的登陆界面
 
-export default function LoginDemo() {
-    const [ActicityState, setActicityState] = useState('login')
-    let [userName, SetUserName] = useState('')
-    let [password, SetPassword] = useState('')
+export default function LoginDemo () {
+    const [ActicityState, setActicityState] = useState("login");
+    const [userName, SetUserName] = useState("");
+    const [password, SetPassword] = useState("");
 
-    function changeActivityState() {
-        if (ActicityState === 'login') {
-            setActicityState('register')
+    function changeActivityState () {
+        if (ActicityState === "login") {
+            setActicityState("register");
         } else {
-            setActicityState('login')
+            setActicityState("login");
         }
-        alert("activity state change")
+        alert("activity state change");
     }
 
-    function handleClick() {
-        // navigate('/shower')
+    function handleClick () {
+    // navigate('/shower')
     }
 
     return (
         <div className='App-login-background'>
             <div className='App-login-board'>
                 <div className='App-login-title' onClick={changeActivityState}>
-                    <div>{ActicityState === 'login' ? 'login' : 'register'}</div>
+                    <div>{ActicityState === "login" ? "login" : "register"}</div>
                 </div>
                 <div className='App-login-content'>
                     <div className='App-login-input'>
@@ -37,15 +37,16 @@ export default function LoginDemo() {
                         <span>PASSWORD</span>
                         <input type="text" value={password} onChange={e => SetPassword(e.target.value)} placeholder='enter password here' />
                     </div>
-                    {ActicityState === 'login' ? null :
-                        <div className='App-login-input'>
+                    {ActicityState === "login"
+                        ? null
+                        : <div className='App-login-input'>
                             <span>ENSUREPASSWORD</span>
                             <input type="text" placeholder='enter password again' />
                         </div>
                     }
-                    <button onClick={handleClick} className='App-login-button'>{ActicityState === 'login' ? 'login' : 'register'}</button>
+                    <button onClick={handleClick} className='App-login-button'>{ActicityState === "login" ? "login" : "register"}</button>
                 </div>
             </div>
         </div>
-    )
+    );
 }

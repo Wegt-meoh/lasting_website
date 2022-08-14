@@ -1,4 +1,4 @@
-type nullish = undefined | null
-type Key = number | string
+type nullish = undefined | null;
+type Key = number | string;
 
-export type { nullish, Key }
+export type { nullish, Key };

@@ -1,8 +1,7 @@
-import React from 'react'
-import './index.css'
+import React from "react";
+import "./index.css";
 
-
-export default function CssLayoutPractice() {
+export default function CssLayoutPractice () {
     return (
         <div className='cssLayoutPractice'>
 
@@ -47,6 +46,10 @@ export default function CssLayoutPractice() {
                 <div className="mid"></div>
                 <div className="right"></div>
             </div>
+            <h1>绝对定位</h1>
+            <div className='posAbsolute'>
+                <div className='posAbsoluteChild'/>
+            </div>
         </div>
-    )
+    );
 }

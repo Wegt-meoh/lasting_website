@@ -1,60 +1,60 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from "react";
 
-export default function Test() {
-    const video = useRef<HTMLVideoElement>(null)
-    const tracks = useRef<MediaStreamTrack[]>()
+export default function UseDisPlayMedia () {
+    const video = useRef<HTMLVideoElement>(null);
+    const tracks = useRef<MediaStreamTrack[]>();
 
     useEffect(() => {
         navigator.mediaDevices.getDisplayMedia({
             audio: true, video: true
         }).then(value => {
-            tracks.current = value.getTracks()
+            tracks.current = value.getTracks();
             if (video.current !== null) {
-                video.current.srcObject = value
-                video.current.play()
+                video.current.srcObject = value;
+                video.current.play();
             } else {
-                alert('video is null')
-                console.log('video is null')
+                alert("video is null");
+                console.log("video is null");
             }
         }).catch(reason => {
-            alert(reason)
-            console.log(reason)
-        })
+            alert(reason);
+            console.log(reason);
+        });
 
         return () => {
-            tracks.current?.forEach(t => t.stop())
-        }
-    }, [])
+            tracks.current?.forEach(t => t.stop());
+        };
+    }, []);
 
     return (
         <video
-            style={{ zIndex: '100', maxWidth: '100%' }}
+            style={{ zIndex: "100", maxWidth: "100%" }}
             ref={video} />
-    )
+    );
 }
 
-export type AnyFunc = (...arg: any[]) => any
+export type AnyFunc = (...arg: any[]) => any;
 
-function deboucing(callback: (...arg: any[]) => any, interval: number) {
-    let timer: NodeJS.Timeout | null = null
+function deboucing (callback: (...arg: any[]) => any, interval: number) {
+    let timer: NodeJS.Timeout | null = null;
     return () => {
-        if (timer !== null) clearTimeout(timer)
-        timer = setTimeout(callback, interval)
-    }
+        if (timer !== null) clearTimeout(timer);
+        timer = setTimeout(callback, interval);
+    };
 }
 
-function throtting(callback: AnyFunc, interval: number, delay: number) {
-    let timer: NodeJS.Timeout | null = null
-    let startTime = Date.now()
+function throtting (callback: AnyFunc, interval: number, delay: number) {
+    let timer: NodeJS.Timeout | null = null;
+    let startTime = Date.now();
 
     return (...args: any[]) => {
-        const waitTime = Date.now() - startTime
-        if (timer !== null) clearTimeout(timer)
+        const waitTime = Date.now() - startTime;
+        if (timer !== null) clearTimeout(timer);
         if (waitTime >= interval) {
-            callback.apply(args)
-            startTime = Date.now()
+            callback.apply(args);
+            startTime = Date.now();
         } else {
-            timer = setTimeout(callback, delay)
+            timer = setTimeout(callback, delay);
         }
-    }
+    };
 }

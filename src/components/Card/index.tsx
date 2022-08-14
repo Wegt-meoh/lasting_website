@@ -1,5 +1,5 @@
-import React from 'react'
-import './index.css'
+import React from "react";
+import "./index.css";
 
 interface CardProps {
     children?: React.ReactNode
@@ -7,12 +7,12 @@ interface CardProps {
     hoverable?: boolean
 }
 
-export default function Card(props: CardProps) {
+export default function Card (props: CardProps) {
     const {
         children,
-        style,
-        // hoverable = true
-    } = props    
+        style
+    // hoverable = true
+    } = props;
 
     return (
         <div
@@ -20,5 +20,5 @@ export default function Card(props: CardProps) {
             className='lasting-card'>
             {children}
         </div>
-    )
+    );
 }

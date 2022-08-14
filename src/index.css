@@ -1,6 +1,6 @@
-@import './newMoon.css';
-@import './dark.css';
-@import './light.css';
+@import './theme/newMoon.css';
+@import './theme/light.css';
+@import './theme/dark.css';
 
 * {
     /* margin: 0;

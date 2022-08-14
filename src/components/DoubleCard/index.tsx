@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement } from "react";
 
-import './index.css'
+import "./index.css";
 
 interface DoubleCardProps {
     title: string
@@ -8,8 +8,8 @@ interface DoubleCardProps {
     children: ReactElement
 }
 
-export default function DoubleCard(props: DoubleCardProps) {
-    const { title, description, children } = props
+export default function DoubleCard (props: DoubleCardProps) {
+    const { title, description, children } = props;
 
     return (
         <div className="doubleCard">
@@ -23,5 +23,5 @@ export default function DoubleCard(props: DoubleCardProps) {
                 </div>
             </div>
         </div>
-    )
+    );
 }

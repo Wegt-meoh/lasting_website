@@ -11,6 +11,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-redux": "^7.1.24",
+    "aplayer": "^1.10.1",
     "axios": "^0.27.2",
     "clipboard": "^2.0.11",
     "highlight.js": "^11.5.1",
@@ -48,7 +49,14 @@
     ]
   },
   "devDependencies": {
-    "@types/marked": "^4.0.3",   
-    "typescript": "^4.7.3"
+    "@types/marked": "^4.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "eslint": "^8.0.1",
+    "eslint-config-standard-with-typescript": "^22.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.30.1",
+    "typescript": "*"
   }
 }

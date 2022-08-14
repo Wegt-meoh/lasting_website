@@ -1,50 +1,48 @@
-import axios from 'axios'
-import { resolve } from 'path'
-import React, { useEffect, useState } from 'react'
-import { newPromise } from './newPromise'
+import axios from "axios";
+import { resolve } from "path";
+import React, { useEffect, useState } from "react";
+import { newPromise } from "./newPromise";
 
-export default function PromiseImpl() {
+export default function PromiseImpl () {
     // promise应用，为了减少请求经常将数据缓存。
-    const id2NameMap: { [index: string]: string } = {}
+    const id2NameMap: { [index: string]: string } = {};
     // 返回类型为string | Promise<unknown> 不好判断
-    function getNameById(id: string): string | Promise<unknown> {
-        if (id2NameMap[id] !== undefined) return id2NameMap[id]
+    function getNameById (id: string): string | Promise<unknown> {
+        if (id2NameMap[id] !== undefined) return id2NameMap[id];
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                id2NameMap[id] = 'ttt'
-                resolve('ttt')
-            }, 2000)
-        })
+                id2NameMap[id] = "ttt";
+                resolve("ttt");
+            }, 2000);
+        });
     }
     // 用promise.resolve解决
-    Promise.resolve(getNameById('gg')).then(name => {
-        console.log(name)
-    })
+    Promise.resolve(getNameById("gg")).then(name => {
+        console.log(name);
+    });
 
+    const idNameMap: { [index: string]: string } = {};
 
-
-    const idNameMap: { [index: string]: string } = {}
-
-    function getName(id: string): void {
+    function getName (id: string): void {
         if (idNameMap[id] !== undefined) {
-            console.log(idNameMap[id])
-            return
+            console.log(idNameMap[id]);
+            return;
         }
-        axios.get('').then(value => {
-            idNameMap[id] = value.data.name
-            console.log(idNameMap[id])
+        axios.get("").then(value => {
+            idNameMap[id] = value.data.name;
+            console.log(idNameMap[id]);
         }, reason => {
-            alert(reason)
-        })
+            alert(reason);
+        });
     }
 
     // let p=new newPromise((resolve,reject)=>{
     //     resolve('a')
     // })
-    // let k=p.finally(()=>{        
+    // let k=p.finally(()=>{
     //     return new Promise((resolve)=>{
     //         resolve('diff')
-    //     })        
+    //     })
     // })
 
     // let p = newPromise.resolve('ee').then((value: unknown) => { console.log('value') }, (reason: unknown) => { console.log('error') })
@@ -53,45 +51,43 @@ export default function PromiseImpl() {
     // })
 
     // 有若干个不同url的后端接口他们的返回值相同，找出最快返回的接口url
-    function fastest(urlList: string[]): void {
-        Promise.race(urlList.map(url => {
-            return new Promise((resolve, reject) => {
+    function fastest (urlList: string[]): void {
+        Promise.race(urlList.map(async url => {
+            return await new Promise((resolve, reject) => {
                 axios.get(url).then(value => {
-                    resolve(url)
+                    resolve(url);
                 }, reason => {
-                    reject(reason)
-                })
-            })
+                    reject(reason);
+                });
+            });
         })).then(value => {
-            console.log(value)
-        })
+            console.log(value);
+        });
     }
 
-
-    let p = Promise.all([
-        new Promise((resolve,reject)=>{
-            setTimeout(()=>[
+    const p = Promise.all([
+        new Promise((resolve, reject) => {
+            setTimeout(() => [
                 reject(111)
-            ],500)
+            ], 500);
         }),
-        new Promise((resolve)=>{
-            setTimeout(()=>{
-                resolve(222)
-            },1000)
+        new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(222);
+            }, 1000);
         })
     ]).then(value => {
-        console.log('all result')
-        console.log(value)
+        console.log("all result");
+        console.log(value);
     }, reason => {
-        console.log('all failed')
-        console.log(reason)
-    })
-
+        console.log("all failed");
+        console.log(reason);
+    });
 
     setTimeout(() => {
-        // console.log(p)
-        // console.log(k)
-    }, 1000)
+    // console.log(p)
+    // console.log(k)
+    }, 1000);
 
     return (
         <>
@@ -103,5 +99,5 @@ export default function PromiseImpl() {
             4
             test
         </>
-    )
+    );
 }

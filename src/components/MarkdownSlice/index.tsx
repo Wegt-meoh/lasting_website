@@ -1,24 +1,23 @@
-import axios from 'axios';
-import hljs from 'highlight.js';
-import { marked } from 'marked';
-import React, { useEffect, useState } from 'react'
+import axios from "axios";
+import hljs from "highlight.js";
+import { marked } from "marked";
+import React, { useEffect, useState } from "react";
 
-import './index.css'
-
+import "./index.css";
 
 interface MarkdownSliceProps {
-    src: string,
-    alt: string,
+    src: string
+    alt: string
     languageSubset: string[]
 }
 
-export default function MarkdownSlice(props: MarkdownSliceProps) {
+export default function MarkdownSlice (props: MarkdownSliceProps) {
     const {
         src,
         alt,
-        languageSubset = [],
-    } = props
-    const [content, setContent] = useState(alt)
+        languageSubset = []
+    } = props;
+    const [content, setContent] = useState(alt);
 
     useEffect(() => {
         marked.setOptions({
@@ -31,38 +30,38 @@ export default function MarkdownSlice(props: MarkdownSliceProps) {
             sanitize: false, // 对输出进行过滤（清理），将忽略任何已经输入的html代码（标签）
             breaks: true, // 允许回车换行（该选项要求 gfm 为true）
             smartLists: true, // 使用比原生markdown更时髦的列表
-            smartypants: false, // 使用更为时髦的标点
-        })
+            smartypants: false // 使用更为时髦的标点
+        });
         axios.get(src).then(value => {
-            const { data } = value
-            setContent(marked(data))
+            const { data } = value;
+            setContent(marked(data));
         }).catch(e => {
-            console.log(e)
-        })
-    }, [src, languageSubset])
+            console.log(e);
+        });
+    }, [src, languageSubset]);
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting) {
-                    const target = e.target as HTMLImageElement
-                    const dataSrc = target.getAttribute('data-src')
-                    target.src = dataSrc === null ? '' : dataSrc
-                    observer.unobserve(target)
+                    const target = e.target as HTMLImageElement;
+                    const dataSrc = target.getAttribute("data-src");
+                    target.src = dataSrc === null ? "" : dataSrc;
+                    observer.unobserve(target);
                 }
-            })
-        })
-        const md = document.getElementsByClassName('md')[0]
-        const images = md.querySelectorAll('img')
+            });
+        });
+        const md = document.getElementsByClassName("md")[0];
+        const images = md.querySelectorAll("img");
         images.forEach(i => {
-            const dataSrc = i.getAttribute('data-src')
-            if (typeof dataSrc === 'string') {
-                observer.observe(i)
+            const dataSrc = i.getAttribute("data-src");
+            if (typeof dataSrc === "string") {
+                observer.observe(i);
             }
-        })
-    }, [content])
+        });
+    }, [content]);
 
     return (
         <div dangerouslySetInnerHTML={{ __html: content }} className='md' />
-    )
+    );
 }

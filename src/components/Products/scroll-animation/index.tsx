@@ -1,31 +1,30 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
-import './style.css'
+import "./style.css";
 
-export default function ScrollAnimation() {
-
+export default function ScrollAnimation () {
     useEffect(() => {
-        const ScrollAnimation=document.getElementById('ScrollAnimation') as HTMLElement
-        const boxes = ScrollAnimation.querySelectorAll('.box')
+        const ScrollAnimation = document.getElementById("ScrollAnimation") as HTMLElement;
+        const boxes = ScrollAnimation.querySelectorAll(".box");
 
-        window.addEventListener('scroll', checkBoxes)
+        window.addEventListener("scroll", checkBoxes);
 
-        checkBoxes()
+        checkBoxes();
 
-        function checkBoxes() {
-            const triggerBottom = window.innerHeight 
+        function checkBoxes () {
+            const triggerBottom = window.innerHeight;
 
             boxes.forEach(box => {
-                const boxBottom = box.getBoundingClientRect().bottom
+                const boxBottom = box.getBoundingClientRect().bottom;
 
                 if (boxBottom < triggerBottom) {
-                    box.classList.add('show')
+                    box.classList.add("show");
                 } else {
-                    box.classList.remove('show')
+                    box.classList.remove("show");
                 }
-            })
+            });
         }
-    },[])
+    }, []);
 
     return (
         <div id='ScrollAnimation'>
@@ -44,5 +43,5 @@ export default function ScrollAnimation() {
             <div className="box"><h2>Content</h2></div>
             <div className="box"><h2>Content</h2></div>
         </div>
-    )
+    );
 }
