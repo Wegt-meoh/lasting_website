@@ -1,0 +1,19 @@
+= springboot
+
+adfasadfad
+
+=== before coding
+* install idea
++
+http://www.baidu.com[baidu]
+* install springboot initializr and assitance plugins
+
+=== coding
+[source,typescript]
+----
+let p=1
+let a:number[]=[]
+a.foreach(i=>{
+    i=i+1
+})
+----

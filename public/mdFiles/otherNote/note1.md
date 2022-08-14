@@ -76,13 +76,37 @@
 
    1. 自我介绍
    2. position的值分别有哪些？分别解释下
+      1. absolute
+         1. 绝对定位相对于最近的非static定位的父级元素
+      2. relative
+      3. static
+      4. inherit
    3. absolute是如何定位的
    4. box-sizing的值有哪些？分别介绍下
+      1. content-box这是默认值
+      2. border-box
    5. 常用的布局有哪些
+      1. flex
+      2. grid
    6. flex布局如何改变主轴方向
    7. 如何实现垂直居中
+      1. flex
+      2. grid
+      3. absolute
    8. js基本数据类型
+      1. Number
+      2. Boolean
+      3. String
+      4. Bigint
+      5. Object
+      6. Symbol
+      7. Null
+      8. Undefined
    9. 常用的类型判断方法
+      1. typeof
+      2. Object.propotype.toString.call
+      3. instanceof
+      4. Object.is
    10. 对比typeof和instanceof
    11. ES6新特性
    12. let和const区别
