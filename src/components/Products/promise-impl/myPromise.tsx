@@ -93,8 +93,11 @@ export class MyPromise<T> {
                 setTimeout(() => {
                     try {
                         //  PromisesA+ 2.2.7.1
-                        const x = onFulfilled!(this.value);
-                        this.resolvePromise(promise2, x, resolve, reject);
+                        if (onFulfilled != null) {
+                            this.resolvePromise(promise2, onFulfilled(this.value), resolve, reject);
+                        } else {
+                            throw new Error("onfullfill is null");
+                        }
                     } catch (e) {
                         //  PromisesA+ 2.2.7.2
                         reject(e);
@@ -106,8 +109,11 @@ export class MyPromise<T> {
                 setTimeout(() => {
                     try {
                         //  PromisesA+ 2.2.7.1
-                        const x = onRejected!(this.reason);
-                        this.resolvePromise(promise2, x, resolve, reject);
+                        if (onRejected != null) {
+                            this.resolvePromise(promise2, onRejected(this.reason), resolve, reject);
+                        } else {
+                            throw new Error("onrejected is null");
+                        }
                     } catch (e) {
                         //  PromisesA+ 2.2.7.2
                         reject(e);
@@ -118,18 +124,24 @@ export class MyPromise<T> {
                 //  调用回调函数时是异步的，因此这里不再需要加setTimeout
                 this.onFulfilledCallbacks.push(() => {
                     try {
-                        const x = onFulfilled!(this.value);
                         //  PromisesA+ 2.2.7.1
-                        this.resolvePromise(promise2, x, resolve, reject);
+                        if (onFulfilled != null) {
+                            this.resolvePromise(promise2, onFulfilled(this.value), resolve, reject);
+                        } else {
+                            throw new Error("onfulfilled is null");
+                        }
                     } catch (e) {
                         reject(e);
                     }
                 });
                 this.onRejectedCallbacks.push(() => {
                     try {
-                        const x = onRejected!(this.reason);
                         //  PromisesA+ 2.2.7.1
-                        this.resolvePromise(promise2, x, resolve, reject);
+                        if (onRejected != null) {
+                            this.resolvePromise(promise2, onRejected(this.reason), resolve, reject);
+                        } else {
+                            throw new Error("onreject is null");
+                        }
                     } catch (e) {
                         reject(e);
                     }
@@ -147,10 +159,10 @@ export class MyPromise<T> {
         }
         let called = false; //  防止resolve和reject多次调用
         //  PromisesA+ 2.3.3
-        if (x && (typeof x === "object" || typeof x === "function")) {
+        if (x !== null && (typeof x === "object" || typeof x === "function")) {
             try {
                 //  PromisesA+ 2.3.3.1 | PromisesA+ 2.3.2
-                const then = (x as PromiseLike<T>).then;
+                const { then } = x as PromiseLike<T>;
                 if (typeof then === "function") {
                     then.call(
                         x,
@@ -169,7 +181,7 @@ export class MyPromise<T> {
                             called = true;
                             reject(r);
                         }
-                    );
+                    ).then(resule => {}, reason => {});
                 } else {
                     //  PromisesA+ 2.3.3.4
                     resolve(x);
@@ -196,6 +208,3 @@ MyPromise.defer = MyPromise.deferred = function () {
     });
     return deferred;
 };
-
-// @ts-expect-error
-// export = MyPromise;

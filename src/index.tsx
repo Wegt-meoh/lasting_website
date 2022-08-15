@@ -1,7 +1,7 @@
-import { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { useRoutes, BrowserRouter } from "react-router-dom";
+import { useRoutes, BrowserRouter, Route, Routes } from "react-router-dom";
 import APlayerComponent from "./components/APlayerComponent";
 import Footer from "./components/Footer";
 import SiderBar from "./components/SiderBar";
@@ -36,7 +36,9 @@ export default function App () {
                 </Suspense>
             </main>
             <Footer />
-            <APlayerComponent />
+            <Routes>
+                <Route path="/" element={ <APlayerComponent />} />
+            </Routes>
         </div>
     );
 }
@@ -46,9 +48,11 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <BrowserRouter>
-        <Provider store={store}>
-            <App />
-        </Provider>
-    </BrowserRouter>
+    <React.StrictMode>
+        <BrowserRouter>
+            <Provider store={store}>
+                <App />
+            </Provider>
+        </BrowserRouter>
+    </React.StrictMode>
 );

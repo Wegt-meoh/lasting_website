@@ -14,7 +14,7 @@ export default function PushBoxGame () {
         if (canvas.current !== null) {
             pushBox.current = new PushBox(0, canvas.current);
         } else {
-            console.log("can not get canvas");
+            throw new Error("can not get canvas");
         }
 
         const listener = (event: KeyboardEvent) => {
@@ -37,6 +37,7 @@ export default function PushBoxGame () {
                     break;
                 case "z":
                     pushBox.current?.back();
+                    break;
             }
         };
 

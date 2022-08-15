@@ -7,9 +7,9 @@ export default function FullScreen ({ children }: any) {
         const listenFunc = (ev: KeyboardEvent) => {
             if (ev.key === "f") {
                 if (document.fullscreenElement !== null) {
-                    document.exitFullscreen();
+                    document.exitFullscreen().then(result => {}, reason => {});
                 } else {
-                    div.current?.requestFullscreen();
+                    div.current?.requestFullscreen().then(v => {}, r => {});
                 }
             }
         };

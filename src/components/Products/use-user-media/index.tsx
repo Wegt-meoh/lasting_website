@@ -16,13 +16,13 @@ export default function UseUserMedia () {
                         if (videoRef.current !== null) {
                             videoRef.current.srcObject = mediaStream;
                             tracks.current = mediaStream.getTracks();
-                            videoRef.current.play();
+                            videoRef.current.play().then(result => {}, reason => {});
                         }
                     }).catch(reason => { alert("无法调用摄像头"); });
             }
         } catch (e) {
             alert("请查看控制台");
-            console.log("地址栏搜索chrome://flags/，找到Insecure origins treated as secure,把本站域名http://www.lastingcoder.xyz输入");
+            throw new Error("地址栏搜索chrome://flags/，找到Insecure origins treated as secure,把本站域名http://www.lastingcoder.xyz输入");
         }
         return () => {
             tracks.current.forEach(t => {
@@ -34,7 +34,7 @@ export default function UseUserMedia () {
     function saveImg () {
         if (canvasRef.current !== null && videoRef.current !== null) {
             canvasRef.current.getContext("2d")?.drawImage(videoRef.current, 0, 0);
-            const canvascBlob = canvasRef.current.toBlob((blob): void => {
+            canvasRef.current.toBlob((blob): void => {
                 if (blob === null || downloadRef.current === null) return;
                 const url = URL.createObjectURL(blob);
                 downloadRef.current.download = "target.png";

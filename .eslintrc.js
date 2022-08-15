@@ -19,18 +19,21 @@ module.exports = {
     ],
     rules: {
         "@typescript-eslint/quotes":["error","double"],
-        "@typescript-eslint/semi-spacing":"error",
-        "@typescript-eslint/no-console":"warn",
+        "semi-spacing":
+            ["error",
+            { "before": false, "after": true }],
+        "no-console":["warn"],
         "@typescript-eslint/indent":["error",4],
         "@typescript-eslint/no-unused-vars":"warn",
         "@typescript-eslint/comma-spacing":["warn",{"before":false,"after":true}],
-        "@typescript-eslint/one-var-declaration-per-line":"warn",
-        "@typescript-eslint/one-var":["warn","never"],
+        "one-var-declaration-per-line":"warn",
+        "one-var":["warn","never"],
         "@typescript-eslint/semi":["error","always"],
-        "@typescript-eslint/no-param-reassign":"warn",
-        "@typescript-eslint/prefer-destructuring":["error",{
+        "no-param-reassign":"warn",
+        "prefer-destructuring":["error",{
             "array":false,
             "object":true
-        }]  
+        }],
+        "@typescript-eslint/explicit-function-return-type":"off"
     }
 }

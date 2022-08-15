@@ -64,8 +64,7 @@ function getGraphData (level: number): GraphCellNumberType[][] {
         return t;
     } catch (e) {
         alert("get map data error:no such level in map data");
-        console.log("get map data error:no such level in map data");
-        return [];
+        throw new Error("get map data error:no such level in map data");
     }
 }
 

@@ -19,7 +19,7 @@ const audios: APlayerAudioOptionType[] = [{
     name: "One Last Kiss",
     artist: "宇多田ヒカル",
     cover: "https://p3.music.126.net/l3G4LigZnOxFE9lB4bz_LQ==/109951165791860501.jpg?param=240y240&type=webp",
-    url: "https://m801.music.126.net/20220728142323/a034c7e9ae4dfccf1042b04557898f58/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/15965327913/3c28/baa3/d890/0737b6ba66b948d61f80b77cdd6bca5e.mp3"
+    url: "https://m701.music.126.net/20220815102718/4a23abfae4b27539fe7fd637ddf04d8e/jdyyaac/obj/w5rDlsOJwrLDjj7CmsOj/15965328381/1083/40a9/a7a4/d2a6b73fea8467c4cf82aa1e0967543e.m4a"
 }, {
     name: "水星记",
     artist: "郭顶",

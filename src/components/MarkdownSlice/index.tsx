@@ -36,7 +36,7 @@ export default function MarkdownSlice (props: MarkdownSliceProps) {
             const { data } = value;
             setContent(marked(data));
         }).catch(e => {
-            console.log(e);
+            throw new Error(e);
         });
     }, [src, languageSubset]);
 

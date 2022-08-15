@@ -11,14 +11,14 @@ export default function UseDisPlayMedia () {
             tracks.current = value.getTracks();
             if (video.current !== null) {
                 video.current.srcObject = value;
-                video.current.play();
+                video.current.play().then(result => {}, reason => {});
             } else {
                 alert("video is null");
-                console.log("video is null");
+                throw new Error("video is null");
             }
         }).catch(reason => {
             alert(reason);
-            console.log(reason);
+            throw new Error(reason);
         });
 
         return () => {
@@ -33,28 +33,28 @@ export default function UseDisPlayMedia () {
     );
 }
 
-export type AnyFunc = (...arg: any[]) => any;
+// export type AnyFunc = (...arg: any[]) => any;
 
-function deboucing (callback: (...arg: any[]) => any, interval: number) {
-    let timer: NodeJS.Timeout | null = null;
-    return () => {
-        if (timer !== null) clearTimeout(timer);
-        timer = setTimeout(callback, interval);
-    };
-}
+// function deboucing (callback: (...arg: any[]) => any, interval: number) {
+//     let timer: NodeJS.Timeout | null = null;
+//     return () => {
+//         if (timer !== null) clearTimeout(timer);
+//         timer = setTimeout(callback, interval);
+//     };
+// }
 
-function throtting (callback: AnyFunc, interval: number, delay: number) {
-    let timer: NodeJS.Timeout | null = null;
-    let startTime = Date.now();
+// function throtting (callback: AnyFunc, interval: number, delay: number) {
+//     let timer: NodeJS.Timeout | null = null;
+//     let startTime = Date.now();
 
-    return (...args: any[]) => {
-        const waitTime = Date.now() - startTime;
-        if (timer !== null) clearTimeout(timer);
-        if (waitTime >= interval) {
-            callback.apply(args);
-            startTime = Date.now();
-        } else {
-            timer = setTimeout(callback, delay);
-        }
-    };
-}
+//     return (...args: any[]) => {
+//         const waitTime = Date.now() - startTime;
+//         if (timer !== null) clearTimeout(timer);
+//         if (waitTime >= interval) {
+//             callback.apply(args);
+//             startTime = Date.now();
+//         } else {
+//             timer = setTimeout(callback, delay);
+//         }
+//     };
+// }

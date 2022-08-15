@@ -60,12 +60,12 @@ function getArtical () {
 
 function getSortedArtical () {
     return getArtical().sort((a, b) => {
-        const date_a = a.date === undefined ? "0" : a.date;
-        const num_a = parseInt(date_a.replaceAll(" ", ""));
+        const dateA = a.date === undefined ? "0" : a.date;
+        const numA = parseInt(dateA.replaceAll(" ", ""));
 
-        const date_b = b.date === undefined ? "0" : b.date;
-        const num_b = parseInt(date_b.replaceAll(" ", ""));
-        return num_b - num_a;
+        const dateB = b.date === undefined ? "0" : b.date;
+        const numB = parseInt(dateB.replaceAll(" ", ""));
+        return numB - numA;
     });
 }
 

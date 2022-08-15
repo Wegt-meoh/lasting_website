@@ -1,7 +1,7 @@
 import deepClone from "../../../utils/deepClone";
 import { direction2TupleMap, Direction2StringType, GraphCellEnum, Tuple } from "./constants";
 import { getGraphData } from "./mapData";
-import { drawRectBorder, PushBoxLocalStorageHandler, tupleAdd } from "./utils";
+import { drawRectBorder, getFinishedLevel, saveFinishedLevel, tupleAdd } from "./utils";
 
 // param
 const unitSize = 40;
@@ -30,7 +30,7 @@ export default class PushBox {
         } else {
             throw new Error("CanvasRenderingContext2D is null");
         }
-        this.finishedLevel = PushBoxLocalStorageHandler.getFinishedLevel();
+        this.finishedLevel = getFinishedLevel();
         this.level = level;
         this.graphStack = [];
         this.graphStack.push(getGraphData(level));
@@ -77,7 +77,7 @@ export default class PushBox {
                     this.context, x * unitSize, y * unitSize,
                     unitSize, unitSize, lineWidth, boxStrockColor);
                 break;
-            case GraphCellEnum.boxOnGoal:
+            case GraphCellEnum.boxOnGoal: {
                 const w = unitSize - 2 * lineWidth;
                 drawRectBorder(
                     this.context, x * unitSize, y * unitSize,
@@ -85,6 +85,7 @@ export default class PushBox {
                 this.context.fillStyle = boxOnGoalFillColor;
                 this.context.fillRect(x * unitSize + lineWidth, y * unitSize + lineWidth, w, w);
                 break;
+            }
             case GraphCellEnum.player:
                 this.context.fillStyle = playerFillColor;
                 this.context.beginPath();
@@ -106,8 +107,7 @@ export default class PushBox {
         const map = this.graphStack[this.graphStack.length - 1];
         if (map === undefined) {
             alert("function getPlayerPos: map is undefined");
-            console.log("function getPlayerPos: map is undefined");
-            return [-1, -1];
+            throw new Error("function getPlayerPos: map is undefined");
         }
         for (let i = 0; i < map.length; i++) {
             for (let j = 0; j < map[0].length; j++) {
@@ -116,8 +116,7 @@ export default class PushBox {
                 }
             }
         }
-        console.log("function getPlayerPos: can not found player");
-        return [-100, -100];
+        throw new Error("function getPlayerPos: can not found player");
     }
 
     getGraphCellValue (pos: [number, number]): number {
@@ -125,8 +124,7 @@ export default class PushBox {
             const map = this.graphStack[this.graphStack.length - 1];
             if (map === undefined) {
                 alert("function getMapCell: map is undefined");
-                console.log("function getMapCell: map is undefined");
-                return -1;
+                throw new Error("function getMapCell: map is undefined");
             }
             return map[pos[1]][pos[0]];
         } catch (e) {
@@ -139,14 +137,13 @@ export default class PushBox {
             const map = this.graphStack.pop();
             if (map === undefined) {
                 alert("function setMapCell: map is undefined");
-                console.log("function setMapCell: map is undefined");
-                return [-1, -1];
+                throw new Error("function setMapCell: map is undefined");
             }
             map[pos[1]][pos[0]] = value;
             this.graphStack.push(map);
         } catch (e) {
             alert("function setMapCell: error");
-            console.log("function setMapCell: error");
+            throw new Error("function setMapCell: error");
         }
     }
 
@@ -157,7 +154,7 @@ export default class PushBox {
             case GraphCellEnum.wall:
                 break;
             case GraphCellEnum.road:
-            case GraphCellEnum.goal:
+            case GraphCellEnum.goal: {
                 const map: number[][] = deepClone(this.graphStack[this.graphStack.length - 1]);
                 this.graphStack.push(map);
                 this.setGraphCellValue(nextPos, this.getGraphCellValue(nextPos) === GraphCellEnum.road
@@ -168,6 +165,7 @@ export default class PushBox {
                         ? GraphCellEnum.goal
                         : GraphCellEnum.road);
                 break;
+            }
             case GraphCellEnum.box:
             case GraphCellEnum.boxOnGoal:
                 if (this.boxMovable(nextPos, direction)) {
@@ -235,6 +233,6 @@ export default class PushBox {
         this.context.fillText("success", width / 2 - 80, height / 2);
 
         this.finishedLevel[this.level] = true;
-        PushBoxLocalStorageHandler.saveFinishedLevel(this.finishedLevel);
+        saveFinishedLevel(this.finishedLevel);
     }
 }

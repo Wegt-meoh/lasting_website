@@ -37,15 +37,17 @@ function XSB2Number (data: string, w: number): GraphCellNumberType[][] {
     return XSBArray;
 }
 
-class PushBoxLocalStorageHandler {
-    static saveFinishedLevel (data: { [index: number]: boolean }) {
-        localStorage.setItem("finishedLevel", JSON.stringify(data));
-    }
-
-    static getFinishedLevel (): { [index: number]: boolean } {
-        if (localStorage.getItem("finishedLevel") === null) return {};
-        return JSON.parse(localStorage.getItem("finishedLevel")!);
-    }
+function saveFinishedLevel (data: { [index: number]: boolean }) {
+    localStorage.setItem("finishedLevel", JSON.stringify(data));
 }
 
-export { drawRectBorder, tupleAdd, XSB2Number, PushBoxLocalStorageHandler };
+function getFinishedLevel (): { [index: number]: boolean } {
+    if (localStorage.getItem("finishedLevel") === null) return {};
+    const result = localStorage.getItem("finishedLevel");
+    if (result === null) {
+        return {};
+    } else {
+        return JSON.parse(result);
+    }
+}
+export { drawRectBorder, tupleAdd, XSB2Number, saveFinishedLevel, getFinishedLevel };

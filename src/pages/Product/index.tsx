@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Card from "../../components/Card";
 import DoubleCard from "../../components/DoubleCard";
 import Header from "../../components/Header";
 import { getProduct } from "../../route/routes";
