@@ -10,7 +10,7 @@ export default function Product () {
 
     return (
         <div className='Product'>
-            <Header h1='Product' p='这是我运用所学到的知识写的一个个小demo，方便记忆和回顾，其中运用的知识点是大项目的基础。' />
+            <Header h1='Product' p='' />
             <section>
                 {routes.map(r => {
                     return (

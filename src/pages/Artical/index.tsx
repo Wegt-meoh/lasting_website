@@ -9,7 +9,7 @@ export default function Artical () {
 
     return (
         <div className='Artical'>
-            <Header h1='Artical' p='知识梳理笔记，都是用markdown书写再用 marked.js，highlight.js 转化成html' />
+            <Header h1='Artical' p='' />
             <section>
                 {routes.map((r, index) => {
                     return <ArticalItem key={index} path={r.path} title={r.title} date={r.date} />;
