@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { useRoutes, BrowserRouter, Route, Routes } from "react-router-dom";
 import APlayerComponent from "./components/APlayerComponent";
 import Footer from "./components/Footer";
+import LoadingPage from "./pages/ExcepetionPage/LoadingPage";
 import SiderBar from "./components/SiderBar";
 
 import "./index.css";
@@ -31,14 +32,12 @@ export default function App () {
         <div className={appClassName}>
             <SiderBar />
             <main>
-                <Suspense fallback={<h1>loading...</h1>}>
+                <Suspense fallback={<LoadingPage/>}>
                     {routes}
                 </Suspense>
             </main>
             <Footer />
-            <Routes>
-                <Route path="/" element={ <APlayerComponent />} />
-            </Routes>
+            <APlayerComponent />
         </div>
     );
 }
