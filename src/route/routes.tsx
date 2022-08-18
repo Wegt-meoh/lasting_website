@@ -7,7 +7,7 @@ import Product from "../pages/Product";
 import {
     CssLayoutPractice, BlurryLoading, DraggingList, ExpandingCards,
     HiddenSearch, LoginDemo, ProgressSteps, RotatingNavAnimation, ScrollAnimation,
-    UseUserMedia, PushBox, UseDisplayMedia
+    UseUserMedia, PushBox, UseDisplayMedia, Piano
 } from "../components/Products";
 
 interface customRouteObject extends Omit<RouteObject, "children"> {
@@ -43,7 +43,8 @@ const routes: customRouteObject[] = [
     { path: "/useDisplayMedia", element: <UseDisplayMedia />, title: "共享屏幕内容", desc: "", classify: "product", date: "2022 06 21" },
     { path: "/dockercmd", element: <MarkdownSlice src="/mdFiles/otherNote/dockerCmd.md" alt="loading..." languageSubset={[]} />, title: "docker常用命令", desc: "", classify: "artical", date: "2022 06 21" },
     { path: "/whatiswebpack", element: <MarkdownSlice src="/mdFiles/otherNote/learningWebpack.md" alt="loading..." languageSubset={[]} />, title: "什么是webpack", desc: "", classify: "artical", date: "2022 06 23" },
-    { path: "/pushbox", element: <PushBox />, title: "Push Box", desc: "", classify: "product", date: "2022 06 25" }
+    { path: "/pushbox", element: <PushBox />, title: "Push Box", desc: "", classify: "product", date: "2022 06 25" },
+    { path: "/piano", element: <Piano />, title: "Piano", desc: "", classify: "product", date: "2022 08 17" }
 ];
 
 function getProduct () {

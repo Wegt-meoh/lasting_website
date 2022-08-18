@@ -12,9 +12,10 @@ const ScrollAnimation = React.lazy(async () => await import("./scroll-animation"
 const UseUserMedia = React.lazy(async () => await import("./use-user-media"));
 const PushBox = React.lazy(async () => await import("./pushman-game"));
 const UseDisplayMedia = React.lazy(async () => await import("./use-display-media"));
+const Piano = React.lazy(async () => await import("./piano"));
 
 export {
     CssLayoutPractice, BlurryLoading, DraggingList, ExpandingCards,
     HiddenSearch, LoginDemo, ProgressSteps, RotatingNavAnimation, ScrollAnimation,
-    UseUserMedia, PushBox, UseDisplayMedia
+    UseUserMedia, PushBox, UseDisplayMedia, Piano
 };
