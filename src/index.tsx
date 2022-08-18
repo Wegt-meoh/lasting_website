@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { useRoutes, BrowserRouter, Route, Routes } from "react-router-dom";
+import { useRoutes, BrowserRouter } from "react-router-dom";
 import APlayerComponent from "./components/APlayerComponent";
 import Footer from "./components/Footer";
 import LoadingPage from "./pages/ExcepetionPage/LoadingPage";
