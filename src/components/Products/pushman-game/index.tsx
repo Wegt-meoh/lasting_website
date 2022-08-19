@@ -1,42 +1,44 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 
 import "./index.css";
 import FullScreen from "../../FullScreen";
-import PushBox from "./gameMaster";
-import { getGraphLength } from "./mapData";
+import PushBox from "./main/gameMaster";
+import { getGraphLength } from "./data/graph.data";
+import { getFinishedLevel } from "./utils/utils";
 
 export default function PushBoxGame () {
+    const gameMaster = useRef<PushBox>();
     const canvas = useRef<HTMLCanvasElement>(null);
-    const pushBox = useRef<PushBox>();
-    const [level, setLevel] = useState(0);
 
     useEffect(() => {
         if (canvas.current !== null) {
-            pushBox.current = new PushBox(0, canvas.current);
+            gameMaster.current = new PushBox(0, canvas.current);
         } else {
             throw new Error("can not get canvas");
         }
+    }, [canvas]);
 
+    useEffect(() => {
         const listener = (event: KeyboardEvent) => {
             switch (event.key) {
                 case "w":
                 case "ArrowUp":
-                    pushBox.current?.playerMove("up");
+                    gameMaster.current?.playerMove("up");
                     break;
                 case "a":
                 case "ArrowLeft":
-                    pushBox.current?.playerMove("left");
+                    gameMaster.current?.playerMove("left");
                     break;
                 case "s":
                 case "ArrowDown":
-                    pushBox.current?.playerMove("down");
+                    gameMaster.current?.playerMove("down");
                     break;
                 case "d":
                 case "ArrowRight":
-                    pushBox.current?.playerMove("right");
+                    gameMaster.current?.playerMove("right");
                     break;
                 case "z":
-                    pushBox.current?.back();
+                    gameMaster.current?.back();
                     break;
             }
         };
@@ -46,45 +48,13 @@ export default function PushBoxGame () {
         return () => {
             document.removeEventListener("keydown", listener);
         };
-    }, [pushBox, canvas]);
+    }, [gameMaster]);
 
     return (
         <FullScreen>
             <div id='pushBoxGame'>
                 <div className='gameUI'>
-                    <div className="tipContainer">
-                        <div>up: w /&nbsp;<img src="/icons/icons8-present-to-all-48.png" alt="arrow up img" /></div>
-                        <div>right: d /&nbsp;<img src="/icons/icons8-present-to-all-48.png" alt="arrow up img" /></div>
-                        <div>down: s /&nbsp;<img src="/icons/icons8-present-to-all-48.png" alt="arrow up img" /></div>
-                        <div>left: a /&nbsp;<img src="/icons/icons8-present-to-all-48.png" alt="arrow up img" /></div>
-                        <div>back: z</div>
-                        <div>full screen: f</div>
-                    </div>
-                    <div className="levelSelection">
-                        {
-                            (() => {
-                                const t: any = [];
-                                for (let i = 0; i < getGraphLength(); i++) {
-                                    let className = "";
-                                    if (level === i) className = "checked";
-                                    if (pushBox.current?.finishedLevel[i] === true) className = "finished";
-                                    t.push(
-                                        <div
-                                            onClick={() => {
-                                                if (pushBox.current?.level === i) return;
-                                                if (window.confirm(`are you sure go to level ${i},any change that you done will be losed.`)) {
-                                                    pushBox.current?.loadLevel(i);
-                                                    setLevel(i);
-                                                }
-                                            }}
-                                            className={className}
-                                            key={i}>{i}</div>
-                                    );
-                                }
-                                return t;
-                            })()
-                        }
-                    </div>
+                    <GameUI gameMaster={gameMaster} />
                 </div>
                 <div className='gameScene'>
                     <canvas ref={canvas}></canvas>
@@ -92,4 +62,50 @@ export default function PushBoxGame () {
             </div>
         </FullScreen>
     );
+}
+
+function GameUI (props: {gameMaster: React.MutableRefObject<PushBox | undefined>}) {
+    const { gameMaster } = props;
+    const [level, setLevel] = useState(0);
+
+    const levelList = useMemo(() => {
+        const finishedLevel = getFinishedLevel();
+
+        const t: JSX.Element[] = [];
+        for (let i = 0; i < getGraphLength(); i++) {
+            let className = "";
+            if (finishedLevel[i]) className = "finished";
+            if (level === i) className = "checked";
+            t.push(
+                <div
+                    onClick={() => {
+                        if (level === i) return;
+                        gameMaster.current?.confirm(
+                            i,
+                            () => {
+                                gameMaster.current?.loadLevel(i);
+                                setLevel(i);
+                            });
+                    }}
+                    className={className}
+                    key={i}>{i}
+                </div>
+            );
+        }
+        return t;
+    }, [gameMaster, level]);
+
+    return <>
+        <div className="tipContainer">
+            <div>up: w /&nbsp;<img src="/icons/icons8-present-to-all-48.png" alt="arrow up img" /></div>
+            <div>right: d /&nbsp;<img src="/icons/icons8-present-to-all-48.png" alt="arrow up img" /></div>
+            <div>down: s /&nbsp;<img src="/icons/icons8-present-to-all-48.png" alt="arrow up img" /></div>
+            <div>left: a /&nbsp;<img src="/icons/icons8-present-to-all-48.png" alt="arrow up img" /></div>
+            <div>back: z</div>
+            <div>full screen: f</div>
+        </div>
+        <div className="levelSelection">
+            {levelList}
+        </div>
+    </>;
 }

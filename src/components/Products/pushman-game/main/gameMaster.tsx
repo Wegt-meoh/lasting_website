@@ -1,7 +1,7 @@
-import deepClone from "../../../utils/deepClone";
-import { direction2TupleMap, Direction2StringType, GraphCellEnum, Tuple } from "./constants";
-import { getGraphData } from "./mapData";
-import { drawRectBorder, getFinishedLevel, saveFinishedLevel, tupleAdd } from "./utils";
+import deepClone from "../../../../utils/deepClone";
+import { direction2TupleMap, Direction2StringType, GraphCellEnum, Tuple, Rect } from "../constant/constants";
+import { getGraphData } from "../data/graph.data";
+import { drawRectBorder, getFinishedLevel, pointInRect, saveFinishedLevel, tupleAdd } from "../utils/utils";
 
 // param
 const unitSize = 40;
@@ -48,6 +48,10 @@ export default class PushBox {
         this.render();
     }
 
+    /**
+     * 撤销上一步
+     * @returns void
+     */
     back (): void {
         if (this.graphStack.length <= 1) return;
         this.graphStack.pop();
@@ -105,12 +109,8 @@ export default class PushBox {
 
     getPlayerPos (): [number, number] {
         const map = this.graphStack[this.graphStack.length - 1];
-        if (map === undefined) {
-            alert("function getPlayerPos: map is undefined");
-            throw new Error("function getPlayerPos: map is undefined");
-        }
-        for (let i = 0; i < map.length; i++) {
-            for (let j = 0; j < map[0].length; j++) {
+        for (let i = 0; i < map?.length; i++) {
+            for (let j = 0; j < map[0]?.length; j++) {
                 if (map[i][j] === GraphCellEnum.player || map[i][j] === GraphCellEnum.playerOnGoal) {
                     return [j, i];
                 }
@@ -119,17 +119,13 @@ export default class PushBox {
         throw new Error("function getPlayerPos: can not found player");
     }
 
-    getGraphCellValue (pos: [number, number]): number {
-        try {
-            const map = this.graphStack[this.graphStack.length - 1];
-            if (map === undefined) {
-                alert("function getMapCell: map is undefined");
-                throw new Error("function getMapCell: map is undefined");
-            }
-            return map[pos[1]][pos[0]];
-        } catch (e) {
-            return -1;
+    getGraphCellValue (pos: Tuple): number {
+        const map = this.graphStack[this.graphStack.length - 1];
+        if (map === undefined) {
+            alert("function getMapCell: map is undefined");
+            throw new Error("function getMapCell: map is undefined");
         }
+        return map[pos[1]][pos[0]];
     }
 
     setGraphCellValue (pos: Tuple, value: number) {
@@ -201,30 +197,146 @@ export default class PushBox {
         }
     }
 
+    confirm (level: number, callback: () => any): void {
+        const confirmDivWidth = 400;
+
+        // make canvas width big enough
+        this.canvas.width = Math.max(this.canvas.width, confirmDivWidth);
+        this.render();
+
+        const textDiv = {
+            width: 400,
+            height: 60,
+            x: 10,
+            y: 10,
+            backgroundColor: "#4f4f4f",
+            fontColor: "#ffffff",
+            padding: 8
+        };
+        const optionDiv = {
+            width: textDiv.width / 2,
+            height: 60,
+            y: textDiv.y + textDiv.height,
+            leftX: textDiv.x,
+            rightX: textDiv.x + textDiv.width / 2,
+            boderColor: "#000000",
+            backgroundColor: "#4f4f4f",
+            fontOffset: 10
+        };
+
+        // make it center
+        textDiv.x = this.canvas.width / 2 - textDiv.width / 2;
+        textDiv.y = this.canvas.height / 2 - (textDiv.height + optionDiv.height) / 2;
+        optionDiv.y = textDiv.y + textDiv.height;
+        optionDiv.leftX = textDiv.x;
+        optionDiv.rightX = textDiv.x + textDiv.width / 2;
+
+        // text div
+        this.context.fillStyle = textDiv.backgroundColor;
+        this.context.fillRect(textDiv.x, textDiv.y, textDiv.width, textDiv.height);
+        this.context.fillStyle = textDiv.fontColor;
+        this.context.font = "16px serif";
+        this.context.textBaseline = "top";
+        this.context.fillText(`are you sure go to level ${level}?`, textDiv.x + textDiv.padding, textDiv.y + textDiv.padding);
+        this.context.fillText("any change that you done will be losed.", textDiv.x + textDiv.padding, textDiv.y + textDiv.padding + 14);
+
+        // left option
+        this.context.fillStyle = optionDiv.backgroundColor;
+        this.context.fillRect(optionDiv.leftX, optionDiv.y,
+            optionDiv.width, optionDiv.height);
+        drawRectBorder(this.context,
+            optionDiv.leftX, optionDiv.y,
+            optionDiv.width, optionDiv.height,
+            4, optionDiv.boderColor);
+        this.context.fillStyle = textDiv.fontColor;
+        this.context.fillText("Yes", optionDiv.leftX + optionDiv.width / 2 - optionDiv.fontOffset, optionDiv.y + optionDiv.height / 2 - optionDiv.fontOffset);
+
+        // right option
+        this.context.fillStyle = optionDiv.backgroundColor;
+        this.context.fillRect(optionDiv.rightX, optionDiv.y,
+            optionDiv.width, optionDiv.height);
+        drawRectBorder(this.context,
+            optionDiv.rightX, optionDiv.y,
+            optionDiv.width, optionDiv.height,
+            4, optionDiv.boderColor);
+        this.context.fillStyle = textDiv.fontColor;
+        this.context.fillText("No", optionDiv.rightX + optionDiv.width / 2 - optionDiv.fontOffset, optionDiv.y + optionDiv.height / 2 - optionDiv.fontOffset);
+
+        // add listener
+        const listener = (ev: MouseEvent) => {
+            const { offsetTop, offsetLeft } = this.canvas;
+            // 实时获取参数避免监听window resize
+            const point: Tuple = [ev.clientX, ev.clientY];
+            const leftOption: Rect = {
+                beginPoint: [offsetLeft + optionDiv.leftX, offsetTop + optionDiv.y],
+                width: optionDiv.width,
+                height: optionDiv.height
+            };
+            const rightOption: Rect = {
+                beginPoint: [offsetLeft + optionDiv.rightX, offsetTop + optionDiv.y],
+                width: optionDiv.width,
+                height: optionDiv.height
+            };
+
+            if (pointInRect(point, leftOption)) {
+                callback();
+                this.canvas.removeEventListener("click", listener);
+                this.canvas.removeEventListener("mousemove", moveListener);
+            } else if (pointInRect(point, rightOption)) {
+                this.render();
+                this.canvas.removeEventListener("click", listener);
+                this.canvas.removeEventListener("mousemove", moveListener);
+            }
+        };
+
+        const moveListener = (ev: MouseEvent) => {
+            const { offsetTop, offsetLeft } = this.canvas;
+            // 实时获取参数避免监听window resize
+            const point: Tuple = [ev.clientX, ev.clientY];
+            const leftOption: Rect = {
+                beginPoint: [offsetLeft + optionDiv.leftX, offsetTop + optionDiv.y],
+                width: optionDiv.width,
+                height: optionDiv.height
+            };
+            const rightOption: Rect = {
+                beginPoint: [offsetLeft + optionDiv.rightX, offsetTop + optionDiv.y],
+                width: optionDiv.width,
+                height: optionDiv.height
+            };
+            if (pointInRect(point, leftOption) || pointInRect(point, rightOption)) {
+                this.canvas.style.cursor = "pointer";
+            } else {
+                this.canvas.style.cursor = "default";
+            }
+        };
+        this.canvas.addEventListener("click", listener);
+        this.canvas.addEventListener("mousemove", moveListener);
+    }
+
     render () {
         let count = 0;
-        const map = this.graphStack.pop();
-        if (map === undefined) return;
-        // before paint cell,have painted all the cells road color
+        const map = this.graphStack[this.graphStack.length - 1];
+
+        // before paint cell,paint all the cells `road` color
         this.context.fillStyle = bgColor;
         this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
         // 注意这里数组的第一纬对应canvas的y轴
-        // 这个循环做了绘图和计数用于判断游戏是否结束
-        map.forEach((row, y) =>
+        // 这个循环做了绘图和计数,而计数用于统计没有被箱子覆盖的目标点数量，来判断游戏是否结束
+        map?.forEach((row, y) =>
             row.forEach((item, x) => {
                 this.paintCell(x, y, item);
                 if (item === GraphCellEnum.goal || item === GraphCellEnum.playerOnGoal) {
                     count++;
                 }
             }));
-        this.graphStack.push(map);
         // 游戏结束后的绘图
         if (count === 0) {
-            this.succ();
+            this.success();
         }
     }
 
-    succ () {
+    success () {
         const { width, height } = this.canvas;
         this.context.fillStyle = bgColor;
         this.context.fillRect(0, 0, width, height);

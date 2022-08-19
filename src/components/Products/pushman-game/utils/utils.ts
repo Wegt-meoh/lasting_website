@@ -1,14 +1,26 @@
-import { GraphCellNumberType } from "./constants";
+import { GraphCellNumberType, Rect, Tuple } from "../constant/constants";
 
 // box-size=border-box and begin point at left top of border
 function drawRectBorder (context: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, lineWidth: number, color: string): void {
+    const { lineWidth: _lineWidth } = context;
+    const { strokeStyle: _strokeStyle } = context;
     context.lineWidth = lineWidth;
     context.strokeStyle = color;
     context.strokeRect(x + context.lineWidth / 2, y + context.lineWidth / 2, w - context.lineWidth, h - context.lineWidth);
+
+    context.lineWidth = _lineWidth;
+    context.strokeStyle = _strokeStyle;
 }
 
 function tupleAdd (a: [number, number], b: [number, number]): [number, number] {
     return [a[0] + b[0], a[1] + b[1]];
+}
+
+function pointInRect (point: Tuple, rect: Rect): boolean {
+    const { beginPoint, width, height } = rect;
+    const endPoint = [beginPoint[0] + width, beginPoint[1] + height];
+    if (point[0] >= beginPoint[0] && point[1] >= beginPoint[1] && point[0] <= endPoint[0] && point[1] <= endPoint[1]) return true;
+    return false;
 }
 
 const XSB2NumberMap: { [index: string]: GraphCellNumberType } = {
@@ -50,4 +62,4 @@ function getFinishedLevel (): { [index: number]: boolean } {
         return JSON.parse(result);
     }
 }
-export { drawRectBorder, tupleAdd, XSB2Number, saveFinishedLevel, getFinishedLevel };
+export { pointInRect, drawRectBorder, tupleAdd, XSB2Number, saveFinishedLevel, getFinishedLevel };

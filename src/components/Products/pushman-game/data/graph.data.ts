@@ -1,6 +1,6 @@
-import deepClone from "../../../utils/deepClone";
-import { GraphCellNumberType } from "./constants";
-import { XSB2Number } from "./utils";
+import deepClone from "../../../../utils/deepClone";
+import { GraphCellNumberType } from "../constant/constants";
+import { XSB2Number } from "../utils/utils";
 
 const graphData: GraphCellNumberType[][][] = [
     [
@@ -58,6 +58,11 @@ const graphData: GraphCellNumberType[][][] = [
     XSB2Number("_#####__####____________________#--#####--#######_______#####__#--------$------#########---#__#--######-#####-#--$-$------#_##$-#----#-------#--$-$--#$$$###-$-#-$--#$###$$-##---###-$---##-#-$-#$##-#-$-###--###-$---$-##---#-#----#-$-###.###-$--$---######---##-#-$-#---.-#.#$######____#-$##--.-#-#-$-*-$---####______#--##-$.#--#@##*##$-----#______#-#####.#--.*#...#---#$-#______#-#--##.-##.*..#$#####--#______#-#-*.*...#...#--$-----##_____##-#-.##.*....#-----#-$-###____#--##-##.#.*.##--#--#$#---#____#----$-#.#.*####--###--$$-#____####---#......*.*-#_#$#---#_______########--###--#_#---###______________####_####_#####___", 31)
 ];
 
+/**
+ *
+ * @param level 关卡id
+ * @returns 关卡数据的拷贝
+ */
 function getGraphData (level: number): GraphCellNumberType[][] {
     try {
         const t = deepClone(graphData[level]);
@@ -68,6 +73,10 @@ function getGraphData (level: number): GraphCellNumberType[][] {
     }
 }
 
+/**
+ * 获取关卡总数
+ * @returns 关卡数
+ */
 function getGraphLength (): number {
     return graphData.length;
 }
