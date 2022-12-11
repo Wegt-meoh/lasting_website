@@ -1,0 +1,2 @@
+.pianoKey{border:1px solid #000;box-sizing:border-box;position:absolute}.pianoKey.black{background-color:#000}.pianoKey.white{background-color:#fff}.pianoKey.press{background-color:var(--dark-bgcolor)}.piano{bottom:0;height:400px;left:0;position:absolute;width:100%}
+/*# sourceMappingURL=844.8657388a.chunk.css.map*/
